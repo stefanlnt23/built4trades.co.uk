@@ -1,50 +1,163 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { SectionWrapper, SectionHeader } from "@/components/section-wrapper"
+import { SectionWrapper } from "@/components/section-wrapper"
+
+type PortfolioItem = {
+  image?: string
+  images?: string[]
+  url?: string
+  promo?: boolean
+  trade: string
+  businessName: string
+  description: string
+}
+
+function shuffleImages(images: string[]) {
+  const shuffled = [...images]
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    ;[shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]]
+  }
+
+  return shuffled
+}
+
+function getRandomSlideDelay() {
+  return 2400 + Math.floor(Math.random() * 2800)
+}
+
+function RotatingPortfolioImage({
+  images,
+  alt,
+  priority = false,
+}: {
+  images: string[]
+  alt: string
+  priority?: boolean
+}) {
+  const [shuffledImages, setShuffledImages] = useState(images)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    setShuffledImages(shuffleImages(images))
+    setActiveIndex(0)
+  }, [images])
+
+  useEffect(() => {
+    if (shuffledImages.length < 2) {
+      return
+    }
+
+    const timeout = window.setTimeout(() => {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % shuffledImages.length)
+    }, getRandomSlideDelay())
+
+    return () => window.clearTimeout(timeout)
+  }, [activeIndex, shuffledImages])
+
+  return (
+    <AnimatePresence initial={false}>
+      <motion.div
+        key={shuffledImages[activeIndex]}
+        initial={{ x: "100%" }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "-100%" }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-0 will-change-transform"
+        style={{ zIndex: 1 }}
+      >
+        <Image
+          src={shuffledImages[activeIndex]}
+          alt={alt}
+          fill
+          priority={priority && activeIndex === 0}
+          quality={88}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </motion.div>
+    </AnimatePresence>
+  )
+}
 
 const portfolioItems = [
   {
-    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80",
+    images: [
+      "/adl-mechanic-1.webp",
+      "/adl-mechanic-2.webp",
+      "/adl-mechanic-3.webp",
+      "/adl-mechanic-4.webp",
+      "/adl-mechanic-5.webp",
+    ],
+    url: "https://adlmechanic.uk",
     trade: "Mobile Mechanic",
-    businessName: "FastFix Mobile Mechanics",
-    description: "A clean, professional site designed to get mobile mechanics found by drivers who need roadside help.",
+    businessName: "ADL Mechanic",
+    description: "A 24/7 mobile mechanic and servicing website built to convert urgent callouts and local service enquiries.",
   },
   {
-    image: "https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=800&q=80",
-    trade: "Emergency Plumber",
-    businessName: "AquaFlow Plumbing",
-    description: "Built for quick contact with prominent phone numbers and emergency call-to-action buttons.",
+    images: [
+      "/daw-mobile-mechanic-1.webp",
+      "/daw-mobile-mechanic-2.webp",
+      "/daw-mobile-mechanic-3.webp",
+      "/daw-mobile-mechanic-4.webp",
+    ],
+    url: "https://dawmobilemechanic.co.uk",
+    trade: "Mobile Mechanic",
+    businessName: "DAW Mobile Mechanic",
+    description: "A local mobile mechanic website built to drive bookings, breakdown enquiries, and trust with clear service-led messaging.",
   },
   {
-    image: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800&q=80",
-    trade: "Electrician",
-    businessName: "Bright Spark Electrical",
-    description: "Professional and trustworthy design that showcases qualifications and builds customer confidence.",
+    images: [
+      "/flori-si-frunze-1.webp",
+      "/flori-si-frunze-2.webp",
+      "/flori-si-frunze-3.webp",
+      "/flori-si-frunze-4.webp",
+      "/flori-si-frunze-5.webp",
+    ],
+    url: "https://florisifrunze.com",
+    trade: "Gardening & Landscaping",
+    businessName: "Flori si Frunze",
+    description: "A gardening and landscaping website built to showcase services clearly and turn local enquiries into booked work.",
   },
   {
-    image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=800&q=80",
-    trade: "Roofing Company",
-    businessName: "Peak Roofing Solutions",
-    description: "Gallery-focused design to showcase completed projects and demonstrate quality workmanship.",
+    images: [
+      "/stefan-lenta-1.webp",
+      "/stefan-lenta-2.webp",
+      "/stefan-lenta-3.webp",
+      "/stefan-lenta-4.webp",
+    ],
+    url: "https://stefanlenta.uk",
+    trade: "Professional Portfolio",
+    businessName: "Stefan Lenta",
+    description: "A personal portfolio site built to present data analytics, training, and operational excellence work with a clear professional profile.",
   },
   {
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
-    trade: "Accountant",
-    businessName: "Clear Accounts",
-    description: "Clean, professional design that builds trust and clearly explains services offered.",
+    images: [
+      "/web-force-1.webp",
+      "/web-force-2.webp",
+      "/web-force-3.webp",
+      "/web-force-4.webp",
+    ],
+    url: "https://web-force.info",
+    trade: "Web Development Agency",
+    businessName: "Web-Force",
+    description: "A web agency site built to present services clearly and drive enquiries for custom websites, e-commerce, SEO, and support.",
   },
   {
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
-    trade: "Builder",
-    businessName: "Solid Build Construction",
-    description: "Project gallery and testimonials to demonstrate reliability and quality of work.",
+    promo: true,
+    url: "/contact",
+    trade: "35% Off",
+    businessName: "Portfolio Wall Spot",
+    description: "One featured spot is still open on the portfolio wall. Claim it now and get 35% off your site.",
   },
-]
+] satisfies PortfolioItem[]
 
 export default function PortfolioPage() {
   return (
@@ -59,10 +172,10 @@ export default function PortfolioPage() {
             className="max-w-4xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
-              Demo Sites Built for Real Trades
+              Sites Built for Real Trades
             </h1>
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mx-auto">
-              Every site below was built to show what's possible for that trade. Want one for yours?
+              These are real sites built for real businesses. Want your business featured next?
             </p>
           </motion.div>
         </div>
@@ -71,49 +184,104 @@ export default function PortfolioPage() {
       {/* Portfolio Grid */}
       <SectionWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {portfolioItems.map((item, index) => (
-            <motion.div
-              key={item.businessName}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.businessName}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    className="gap-2"
-                    asChild
-                  >
-                    <Link href="#">
-                      View Demo <ExternalLink className="h-4 w-4" />
-                    </Link>
+          {portfolioItems.map((item, index) => {
+            if (item.promo) {
+              return (
+                <motion.div
+                  key={item.businessName || item.url || index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group flex min-h-[28rem] flex-col justify-between rounded-xl border border-primary/20 bg-gradient-to-br from-orange-50 via-card to-amber-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 lg:p-8"
+                >
+                  <div>
+                    <span className="inline-flex rounded-full bg-primary px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground">
+                      {item.trade}
+                    </span>
+                    <h3 className="mt-6 font-display text-3xl font-bold leading-tight text-card-foreground lg:text-4xl">
+                      Claim Your Spot on the Portfolio Wall
+                    </h3>
+                    <p className="mt-4 max-w-sm text-base leading-relaxed text-muted-foreground lg:text-lg">
+                      {item.description}
+                    </p>
+                  </div>
+                  <Button asChild size="lg" className="mt-8 w-full sm:w-fit">
+                    <Link href={item.url ?? "/contact"}>Claim Now</Link>
                   </Button>
+                </motion.div>
+              )
+            }
+
+            const hasContent = Boolean(item.trade || item.businessName || item.description)
+            const usesCarousel = Boolean(item.images && item.images.length > 1)
+            const shouldStretchImage = !hasContent && !usesCarousel
+            return (
+              <motion.div
+                key={item.businessName || item.url || index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className={`relative overflow-hidden ${hasContent ? "aspect-video" : "h-full min-h-[28rem]"}`}>
+                  {usesCarousel ? (
+                    <RotatingPortfolioImage
+                      images={item.images ?? []}
+                      alt={item.businessName || "Portfolio image"}
+                      priority={index < 2}
+                    />
+                ) : (
+                  <Image
+                    src={item.image ?? item.images?.[0] ?? "/placeholder.jpg"}
+                    alt={item.businessName || "Portfolio image"}
+                    fill
+                    priority={index < 2}
+                    quality={88}
+                    className={`${shouldStretchImage ? "object-fill scale-[1.38]" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="gap-2"
+                      asChild
+                    >
+                      <Link
+                        href={item.url ?? "#"}
+                        target={item.url?.startsWith("http") ? "_blank" : undefined}
+                        rel={item.url?.startsWith("http") ? "noreferrer" : undefined}
+                      >
+                        {item.url === "/contact" ? "Claim This Spot" : "View Site"} <ExternalLink className="h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <div className="p-5 lg:p-6">
-                <span className="text-xs font-medium text-primary uppercase tracking-wider">
-                  {item.trade}
-                </span>
-                <h3 className="font-display font-semibold text-lg lg:text-xl text-card-foreground mt-1 mb-2">
-                  {item.businessName}
-                </h3>
-                <p className="text-muted-foreground text-sm lg:text-base leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                {hasContent && (
+                  <div className="p-5 lg:p-6">
+                    {item.trade && (
+                      <span className="text-xs font-medium text-primary uppercase tracking-wider">
+                        {item.trade}
+                      </span>
+                    )}
+                    {item.businessName && (
+                      <h3 className="font-display font-semibold text-lg lg:text-xl text-card-foreground mt-1 mb-2">
+                        {item.businessName}
+                      </h3>
+                    )}
+                    {item.description && (
+                      <p className="text-muted-foreground text-sm lg:text-base leading-relaxed">
+                        {item.description}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </motion.div>
+            )
+          })}
         </div>
       </SectionWrapper>
 
@@ -126,13 +294,13 @@ export default function PortfolioPage() {
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6">
-            Want to See One Built for YOUR Trade?
+            Want Your Business on the Wall?
           </h2>
           <p className="text-secondary-foreground/80 text-lg mb-8">
-            {"We'll build it free — no obligation. Tell us about your trade and we'll create a custom demo website just for you."}
+            {"We're filling the final featured slot now. If you want the 35% portfolio deal and a site built around your business, get in touch before that last place goes."}
           </p>
           <Button asChild size="lg">
-            <Link href="/contact">Request Your Free Demo</Link>
+            <Link href="/contact">Claim Your Spot</Link>
           </Button>
         </motion.div>
       </SectionWrapper>

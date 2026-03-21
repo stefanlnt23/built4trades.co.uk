@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
@@ -7,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { SectionWrapper, SectionHeader } from "@/components/section-wrapper"
 
 export default function AboutPage() {
+  const [bellaImageSrc, setBellaImageSrc] = useState("/bella.png")
+
   return (
     <>
       {/* Hero */}
@@ -57,14 +60,19 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-[4/5] relative rounded-2xl overflow-hidden">
+            <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_34%)] blur-2xl" />
+            <div className="aspect-[4/4.7] relative overflow-hidden rounded-[2rem] border border-white/55 bg-[linear-gradient(180deg,rgba(255,248,240,0.92),rgba(243,238,230,0.84))] shadow-[0_28px_70px_rgba(15,23,42,0.10)]">
               <Image
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                src="/me.png"
                 alt="Stef - Built4Trades.co.uk founder"
                 fill
-                className="object-cover"
+                className="object-cover object-top scale-[1.03]"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),transparent_18%,transparent_62%,rgba(247,242,235,0.38)_82%,rgba(247,242,235,0.92)_100%)]" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] bg-gradient-to-t from-[#f7f2eb] via-[#f7f2eb]/70 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-[14%] bg-gradient-to-r from-white/28 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[14%] bg-gradient-to-l from-white/22 to-transparent" />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground rounded-xl p-6 shadow-lg">
               <p className="font-display font-bold text-2xl">Based in Coventry</p>
@@ -74,31 +82,115 @@ export default function AboutPage() {
         </div>
       </SectionWrapper>
 
+      {/* Bella Section */}
+      <SectionWrapper>
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative order-1 lg:order-1"
+          >
+            <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.14),transparent_30%)] blur-2xl" />
+            <div className="aspect-[4/4.85] relative overflow-hidden rounded-[2rem] border border-white/50 bg-[linear-gradient(180deg,rgba(251,249,245,0.92),rgba(241,236,229,0.84))] shadow-[0_28px_70px_rgba(15,23,42,0.08)]">
+              <Image
+                src={bellaImageSrc}
+                alt="Bella - graphic designer for Built4Trades.co.uk"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                onError={() => setBellaImageSrc("/placeholder-user.jpg")}
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_18%,transparent_60%,rgba(247,242,235,0.34)_82%,rgba(247,242,235,0.90)_100%)]" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] bg-gradient-to-t from-[#f7f2eb] via-[#f7f2eb]/70 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-white/24 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[12%] bg-gradient-to-l from-white/20 to-transparent" />
+            </div>
+            <div className="absolute -bottom-6 -right-6 rounded-xl bg-primary p-6 text-primary-foreground shadow-lg">
+              <p className="font-display text-2xl font-bold">Graphic Designer</p>
+              <p className="text-primary-foreground/80">Branding and visual direction</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="order-2 lg:order-2"
+          >
+            <SectionHeader
+              title="Meet Bella"
+              centered={false}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl"
+            >
+              <p className="mb-6 text-lg leading-relaxed text-foreground">
+                Bella is the graphic designer behind the visual side of Built4Trades.co.uk. She helps shape the branding, layout direction, and design details so the website feels polished, clear, and built with intent.
+              </p>
+              <p className="mb-6 text-lg leading-relaxed text-foreground">
+                While I handle the development and technical side, Bella brings the creative eye that helps the site look professional and properly put together from first impression to final finish.
+              </p>
+              <p className="text-lg leading-relaxed text-foreground">
+                Together, that means you get a website that not only works properly, but also looks sharp and represents your business the right way online.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </SectionWrapper>
+
       {/* Why I Started */}
       <SectionWrapper background="muted">
-        <div className="max-w-3xl mx-auto">
-          <SectionHeader
-            title="Why I Started Built4Trades.co.uk"
-            centered={false}
-          />
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="order-1 lg:order-1">
+            <SectionHeader
+              title="Why I Started Built4Trades.co.uk"
+              centered={false}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl"
+            >
+              <p className="mb-6 text-lg leading-relaxed text-foreground">
+                I used to freelance for agencies, building websites for all sorts of businesses. But I kept seeing the same problem: talented tradespeople were being overcharged for mediocre websites, or they were putting off getting one because the whole process seemed too complicated and expensive.
+              </p>
+              <p className="mb-6 text-lg leading-relaxed text-foreground">
+                Meanwhile, their competitors with half the skills but a decent website were getting all the calls.
+              </p>
+              <p className="mb-6 text-lg leading-relaxed text-foreground">
+                That didnt sit right with me. So I started Built4Trades.co.uk — a simple, transparent service where I build you a professional website, you pay a flat monthly fee, and I handle everything else. No surprises, no tech headaches, no contracts tying you down.
+              </p>
+              <p className="text-lg leading-relaxed text-foreground">
+                If youre a tradesperson who wants a website that actually works for your business, without the hassle — Im here to help.
+              </p>
+            </motion.div>
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="prose prose-lg"
+            className="relative order-2 lg:order-2"
           >
-            <p className="text-lg text-foreground leading-relaxed mb-6">
-              I used to freelance for agencies, building websites for all sorts of businesses. But I kept seeing the same problem: talented tradespeople were being overcharged for mediocre websites, or they were putting off getting one because the whole process seemed too complicated and expensive.
-            </p>
-            <p className="text-lg text-foreground leading-relaxed mb-6">
-              Meanwhile, their competitors with half the skills but a decent website were getting all the calls.
-            </p>
-            <p className="text-lg text-foreground leading-relaxed mb-6">
-              That didnt sit right with me. So I started Built4Trades.co.uk — a simple, transparent service where I build you a professional website, you pay a flat monthly fee, and I handle everything else. No surprises, no tech headaches, no contracts tying you down.
-            </p>
-            <p className="text-lg text-foreground leading-relaxed">
-              If youre a tradesperson who wants a website that actually works for your business, without the hassle — Im here to help.
-            </p>
+            <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom,rgba(251,146,60,0.14),transparent_30%)] blur-2xl" />
+            <div className="relative aspect-[4/4.85] overflow-hidden rounded-[2rem] border border-white/50 bg-[linear-gradient(180deg,rgba(251,249,245,0.92),rgba(241,236,229,0.84))] shadow-[0_28px_70px_rgba(15,23,42,0.08)]">
+              <Image
+                src="/me2.png"
+                alt="Stef working on Built4Trades.co.uk"
+                fill
+                className="object-cover object-top scale-[1.04]"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_18%,transparent_60%,rgba(247,242,235,0.34)_82%,rgba(247,242,235,0.90)_100%)]" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] bg-gradient-to-t from-[#f7f2eb] via-[#f7f2eb]/70 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-white/24 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[12%] bg-gradient-to-l from-white/20 to-transparent" />
+            </div>
           </motion.div>
         </div>
       </SectionWrapper>

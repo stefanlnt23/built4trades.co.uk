@@ -2,39 +2,108 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Check } from "lucide-react"
+import { Check, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SectionWrapper } from "@/components/section-wrapper"
-import { cn } from "@/lib/utils"
 
 const plans = [
   {
-    name: "Starter",
-    price: "29",
-    description: "Perfect for getting started with a professional online presence.",
+    name: "Basic",
+    price: "15.90",
+    description: "A simple one-page site for trades who just need a clean online presence.",
     features: [
       "1-page website",
       "Mobile-friendly design",
       "Hosting included",
       "Contact form",
       "Basic on-page SEO",
+      "SSL security included",
     ],
-    recommended: false,
+  },
+  {
+    name: "Starter",
+    price: "29",
+    description: "Perfect for getting started with a professional site that can grow with your business.",
+    features: [
+      "Everything in Basic",
+      "Multi-page site (up to 3 pages)",
+      "Google Maps embed",
+      "WhatsApp or call CTA",
+      "Monthly content updates",
+    ],
   },
   {
     name: "Pro",
     price: "49",
-    description: "Everything you need to dominate local search and win more work.",
+    description: "A more complete setup for trades that need a larger site, stronger SEO, and smarter automation.",
     features: [
       "Everything in Starter",
-      "Multi-page site (up to 5 pages)",
+      "Multi-page site (up to 15 pages)",
       "Local SEO setup",
       "Google Business profile help",
       "Google review link setup",
-      "Monthly content updates",
+      "Automation setup",
       "Priority support",
     ],
-    recommended: true,
+  },
+]
+
+const comparisonRows = [
+  {
+    label: "Pages",
+    values: ["1 page", "Up to 3 pages", "Up to 15 pages"],
+  },
+  {
+    label: "Mobile-friendly design",
+    included: [true, true, true],
+  },
+  {
+    label: "Hosting included",
+    included: [true, true, true],
+  },
+  {
+    label: "Contact form",
+    included: [true, true, true],
+  },
+  {
+    label: "Basic on-page SEO",
+    included: [true, true, true],
+  },
+  {
+    label: "SSL security",
+    included: [true, true, true],
+  },
+  {
+    label: "Google Maps embed",
+    included: [false, true, true],
+  },
+  {
+    label: "WhatsApp or call CTA",
+    included: [false, true, true],
+  },
+  {
+    label: "Monthly content updates",
+    included: [false, true, true],
+  },
+  {
+    label: "Local SEO setup",
+    included: [false, false, true],
+  },
+  {
+    label: "Google Business profile help",
+    included: [false, false, true],
+  },
+  {
+    label: "Google review link setup",
+    included: [false, false, true],
+  },
+  {
+    label: "Automation setup",
+    included: [false, false, true],
+  },
+  {
+    label: "Priority support",
+    included: [false, false, true],
   },
 ]
 
@@ -60,63 +129,92 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pricing Cards */}
+      {/* Pricing Comparison */}
       <SectionWrapper>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={cn(
-                "relative rounded-2xl p-8 border",
-                plan.recommended
-                  ? "bg-primary/5 border-primary shadow-lg shadow-primary/10"
-                  : "bg-card border-border"
-              )}
-            >
-              {plan.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-primary text-primary-foreground text-sm font-semibold px-4 py-1.5 rounded-full">
-                    Recommended
-                  </span>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-border bg-card shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
+        >
+          <div className="overflow-x-auto">
+            <div className="min-w-[760px]">
+              <div className="grid grid-cols-[1.45fr_repeat(3,minmax(0,1fr))] border-b border-border bg-muted/30">
+                <div className="p-3 lg:p-4">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-primary lg:text-xs">What&apos;s Included</p>
+                  <h2 className="mt-1 font-display text-lg font-bold text-foreground lg:text-xl">
+                    Compare All 3 Plans
+                  </h2>
+                  <p className="mt-1 max-w-sm text-[11px] leading-relaxed text-muted-foreground lg:text-xs">
+                    One clear table so people can see exactly what they get in each package.
+                  </p>
                 </div>
-              )}
-              <div className="text-center mb-8">
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">
-                  {plan.name}
-                </h2>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {plan.description}
-                </p>
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl lg:text-5xl font-display font-bold text-foreground">
-                    £{plan.price}
-                  </span>
-                  <span className="text-muted-foreground">/month</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-8">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                    <span className="text-foreground">{feature}</span>
-                  </li>
+                {plans.map((plan) => (
+                  <div
+                    key={plan.name}
+                    className={`p-3 text-center lg:p-4 ${plan.name === "Starter" ? "bg-primary/8" : ""}`}
+                  >
+                    {plan.name === "Starter" && (
+                      <span className="mb-1.5 inline-flex rounded-full bg-primary px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.14em] text-primary-foreground">
+                        Popular
+                      </span>
+                    )}
+                    <h3 className="font-display text-lg font-bold text-foreground lg:text-xl">{plan.name}</h3>
+                    <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground lg:text-xs">{plan.description}</p>
+                    <div className="mt-2 flex items-baseline justify-center gap-1">
+                      <span className="font-display text-2xl font-bold text-foreground lg:text-3xl">£{plan.price}</span>
+                      <span className="text-[11px] text-muted-foreground lg:text-xs">/month</span>
+                    </div>
+                  </div>
                 ))}
-              </ul>
-              <Button
-                asChild
-                className="w-full"
-                size="lg"
-                variant={plan.recommended ? "default" : "outline"}
-              >
-                <Link href="/contact">Get Started</Link>
-              </Button>
-            </motion.div>
-          ))}
-        </div>
+              </div>
+
+              {comparisonRows.map((row, rowIndex) => (
+                <div
+                  key={row.label}
+                  className={`grid grid-cols-[1.45fr_repeat(3,minmax(0,1fr))] border-b border-border/80 ${
+                    rowIndex % 2 === 0 ? "bg-background" : "bg-muted/20"
+                  }`}
+                >
+                  <div className="flex items-center p-2.5 text-[12px] font-medium text-foreground lg:p-3">
+                    {row.label}
+                  </div>
+                  {plans.map((plan, planIndex) => (
+                    <div
+                      key={`${row.label}-${plan.name}`}
+                      className={`flex items-center justify-center p-2.5 lg:p-3 ${plan.name === "Starter" ? "bg-primary/5" : ""}`}
+                    >
+                      {row.values ? (
+                        <span className="text-[12px] font-medium text-foreground">{row.values[planIndex]}</span>
+                      ) : row.included?.[planIndex] ? (
+                        <Check className="h-4 w-4 text-green-600" />
+                      ) : (
+                        <X className="h-4 w-4 text-red-500" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
+
+              <div className="grid grid-cols-1 gap-2 p-3 lg:grid-cols-[1.45fr_repeat(3,minmax(0,1fr))] lg:p-4">
+                <div className="text-[11px] leading-relaxed text-muted-foreground lg:text-xs">
+                  No setup fees. No long contracts. Hosting and support are included across all plans.
+                </div>
+                {plans.map((plan) => (
+                  <Button
+                    key={plan.name}
+                    asChild
+                    size="default"
+                    variant={plan.name === "Starter" ? "default" : "outline"}
+                    className="h-9 w-full text-sm"
+                  >
+                    <Link href="/contact">Get {plan.name}</Link>
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Additional Info */}
         <motion.div

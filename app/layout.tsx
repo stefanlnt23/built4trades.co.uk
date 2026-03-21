@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: 'Built4Trades.co.uk | Professional Websites for UK Tradespeople',
-  description: 'We build fast, professional websites for UK tradespeople. No jargon. No contracts. Just results. From £29/month.',
+  description: 'We build fast, professional websites for UK tradespeople. No jargon. No contracts. Just results. From £15.90/month.',
   generator: 'v0.app',
   keywords: ['web design', 'tradespeople', 'UK', 'plumber website', 'electrician website', 'builder website', 'mechanic website'],
   authors: [{ name: 'Stef', url: 'https://built4trades.co.uk' }],
