@@ -51,11 +51,11 @@ export function Navigation() {
           <Link
             href="/"
             className="flex items-center shrink-0 transition-opacity hover:opacity-90"
-            aria-label="Building Trades home"
+            aria-label="Built4Trades.co.uk home"
           >
             <Image
               src="/buildingtrades-logo.png"
-              alt="Building Trades"
+              alt="Built4Trades.co.uk"
               width={604}
               height={604}
               priority

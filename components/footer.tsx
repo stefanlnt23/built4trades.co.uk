@@ -28,7 +28,7 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2 mb-4">
               <Wrench className="h-6 w-6 text-primary" />
               <span className="font-display text-xl font-bold">
-                BuildingTrades
+                Built4Trades.co.uk
               </span>
             </Link>
             <p className="text-secondary-foreground/80 text-sm leading-relaxed">
@@ -82,10 +82,10 @@ export function Footer() {
               <li>Based in Coventry, UK</li>
               <li>
                 <a
-                  href="mailto:hello@buildingtrades.co.uk"
+                  href="mailto:hello@built4trades.co.uk"
                   className="hover:text-primary transition-colors"
                 >
-                  hello@buildingtrades.co.uk
+                  hello@built4trades.co.uk
                 </a>
               </li>
             </ul>
@@ -96,7 +96,7 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-secondary-foreground/10">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-secondary-foreground/60 text-sm text-center sm:text-left">
-              &copy; {new Date().getFullYear()} Building Trades | Based in Coventry, UK | buildingtrades.co.uk
+              &copy; {new Date().getFullYear()} Built4Trades.co.uk | Based in Coventry, UK | built4trades.co.uk
             </p>
             <div className="flex items-center gap-6">
               <Link

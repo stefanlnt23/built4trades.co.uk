@@ -147,7 +147,7 @@ const reviews = [
     name: "Karen Mills",
     trade: "Electrician, Manchester",
     rating: 5,
-    text: "I put off getting a website for years because I thought it would be complicated. Building Trades made it dead easy. My site looks brilliant and I didn't have to do anything.",
+    text: "I put off getting a website for years because I thought it would be complicated. Built4Trades.co.uk made it dead easy. My site looks brilliant and I didn't have to do anything.",
   },
   {
     name: "Tony Richardson",
@@ -376,7 +376,7 @@ export default function HomePage() {
             className="bg-primary/10 rounded-xl p-6 lg:p-8 border border-primary/20"
           >
             <h3 className="font-display text-xl lg:text-2xl font-bold text-primary mb-6">
-              With a Building Trades Website
+              With a Built4Trades.co.uk Website
             </h3>
             <ul className="space-y-4">
               {positives.map((item, index) => (

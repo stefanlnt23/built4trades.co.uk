@@ -85,7 +85,7 @@ export default function ServicesPage() {
       {/* What Makes Us Different */}
       <SectionWrapper background="muted">
         <SectionHeader
-          title="What Makes Building Trades Different"
+          title="What Makes Built4Trades.co.uk Different"
           subtitle="We're not a big agency churning out generic websites. We're specialists who understand trades businesses."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">

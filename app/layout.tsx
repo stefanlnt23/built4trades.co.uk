@@ -24,11 +24,11 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Building Trades | Professional Websites for UK Tradespeople',
+  title: 'Built4Trades.co.uk | Professional Websites for UK Tradespeople',
   description: 'We build fast, professional websites for UK tradespeople. No jargon. No contracts. Just results. From £29/month.',
   generator: 'v0.app',
   keywords: ['web design', 'tradespeople', 'UK', 'plumber website', 'electrician website', 'builder website', 'mechanic website'],
-  authors: [{ name: 'Stef', url: 'https://buildingtrades.co.uk' }],
+  authors: [{ name: 'Stef', url: 'https://built4trades.co.uk' }],
   icons: {
     icon: [
       {

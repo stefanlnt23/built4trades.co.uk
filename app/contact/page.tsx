@@ -147,7 +147,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="mailto:hello@buildingtrades.co.uk"
+                href="mailto:hello@built4trades.co.uk"
                 className="flex items-start gap-4 p-4 rounded-xl bg-muted hover:bg-muted/80 transition-colors"
               >
                 <div className="p-3 rounded-lg bg-primary/10">
@@ -155,7 +155,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">Send an email</p>
-                  <p className="text-muted-foreground">hello@buildingtrades.co.uk</p>
+                  <p className="text-muted-foreground">hello@built4trades.co.uk</p>
                 </div>
               </a>
             </div>

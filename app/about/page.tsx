@@ -40,7 +40,7 @@ export default function AboutPage() {
               {"I'm Stef, a Coventry-based web developer who noticed that too many skilled tradespeople were losing work simply because they had no online presence — or a website that looked like it was built in 2005."}
             </p>
             <p className="text-lg lg:text-xl text-foreground leading-relaxed mb-8">
-              Building Trades exists to fix that. I build honest, affordable, no-nonsense websites specifically for trades. No jargon, no complicated contracts, no waiting months for updates.
+              Built4Trades.co.uk exists to fix that. I build honest, affordable, no-nonsense websites specifically for trades. No jargon, no complicated contracts, no waiting months for updates.
             </p>
             <blockquote className="border-l-4 border-primary pl-6 py-2 my-8">
               <p className="text-xl lg:text-2xl font-display font-medium text-foreground italic">
@@ -60,7 +60,7 @@ export default function AboutPage() {
             <div className="aspect-[4/5] relative rounded-2xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
-                alt="Stef - Building Trades founder"
+                alt="Stef - Built4Trades.co.uk founder"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -78,7 +78,7 @@ export default function AboutPage() {
       <SectionWrapper background="muted">
         <div className="max-w-3xl mx-auto">
           <SectionHeader
-            title="Why I Started Building Trades"
+            title="Why I Started Built4Trades.co.uk"
             centered={false}
           />
           <motion.div
@@ -94,7 +94,7 @@ export default function AboutPage() {
               Meanwhile, their competitors with half the skills but a decent website were getting all the calls.
             </p>
             <p className="text-lg text-foreground leading-relaxed mb-6">
-              That didnt sit right with me. So I started Building Trades — a simple, transparent service where I build you a professional website, you pay a flat monthly fee, and I handle everything else. No surprises, no tech headaches, no contracts tying you down.
+              That didnt sit right with me. So I started Built4Trades.co.uk — a simple, transparent service where I build you a professional website, you pay a flat monthly fee, and I handle everything else. No surprises, no tech headaches, no contracts tying you down.
             </p>
             <p className="text-lg text-foreground leading-relaxed">
               If youre a tradesperson who wants a website that actually works for your business, without the hassle — Im here to help.
