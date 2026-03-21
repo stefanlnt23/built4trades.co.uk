@@ -59,7 +59,7 @@ export function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md shadow-sm lg:border-b-0 lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none",
+        "fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card/95 backdrop-blur-md shadow-sm lg:border-b-0 lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none",
         (isScrolled || isOpen)
           ? "bg-card/95 backdrop-blur-md shadow-sm border-b border-border"
           : "lg:bg-transparent lg:shadow-none"
@@ -110,7 +110,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden rounded-lg border border-primary/30 bg-card p-2 text-primary shadow-sm"
+            className="relative z-[90] lg:hidden rounded-lg border border-primary/30 bg-card p-2 text-primary shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -125,10 +125,31 @@ export function Navigation() {
       {isOpen && (
         <div
           id="mobile-navigation"
-          className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-xl lg:hidden"
+          className="fixed inset-0 z-[80] bg-card lg:hidden"
           aria-hidden={!isOpen}
         >
-          <div className="flex h-full flex-col px-6 pt-20 pb-6">
+          <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6">
+            <Link href="/" className="flex items-center shrink-0" aria-label="Built4Trades.co.uk home">
+              <Image
+                src="/buildingtrades-logo.png"
+                alt="Built4Trades.co.uk"
+                width={604}
+                height={604}
+                className="h-14 w-auto sm:h-16"
+              />
+            </Link>
+            <button
+              className="rounded-lg border border-primary/30 bg-card p-2 text-primary shadow-sm"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          <div className="h-px w-full bg-border" />
+
+          <div className="flex h-[calc(100dvh-4rem)] flex-col overflow-y-auto px-6 py-6">
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
@@ -152,16 +173,6 @@ export function Navigation() {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Mobile Overlay */}
-      {isOpen && (
-        <button
-          type="button"
-          aria-label="Close menu overlay"
-          onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
-        />
       )}
     </header>
   )
