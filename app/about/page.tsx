@@ -1,24 +1,15 @@
-"use client"
-
-import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { SectionWrapper, SectionHeader } from "@/components/section-wrapper"
 
 export default function AboutPage() {
-  const [bellaImageSrc, setBellaImageSrc] = useState("/bella.png")
-
   return (
     <>
       {/* Hero */}
       <section className="pt-28 lg:pt-36 pb-16 lg:pb-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-4xl"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
@@ -27,17 +18,14 @@ export default function AboutPage() {
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl">
               No big agency. No outsourcing. Just honest, affordable websites built specifically for UK tradespeople.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
       <SectionWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
           >
             <p className="text-lg lg:text-xl text-foreground leading-relaxed mb-6">
               {"I'm Stef, a Coventry-based web developer who noticed that too many skilled tradespeople were losing work simply because they had no online presence — or a website that looked like it was built in 2005."}
@@ -53,11 +41,8 @@ export default function AboutPage() {
             <p className="text-muted-foreground leading-relaxed">
               Every website I build is designed to do one thing: get you more work. I handle everything — the design, the hosting, the tech stuff — so you can focus on what you do best.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          </div>
+          <div
             className="relative"
           >
             <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_34%)] blur-2xl" />
@@ -78,28 +63,24 @@ export default function AboutPage() {
               <p className="font-display font-bold text-2xl">Based in Coventry</p>
               <p className="text-primary-foreground/80">Serving all of the UK</p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </SectionWrapper>
 
       {/* Bella Section */}
       <SectionWrapper>
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="relative order-1 lg:order-1"
           >
             <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.14),transparent_30%)] blur-2xl" />
             <div className="aspect-[4/4.85] relative overflow-hidden rounded-[2rem] border border-white/50 bg-[linear-gradient(180deg,rgba(251,249,245,0.92),rgba(241,236,229,0.84))] shadow-[0_28px_70px_rgba(15,23,42,0.08)]">
               <Image
-                src={bellaImageSrc}
+                src="/bella.png"
                 alt="Bella - graphic designer for Built4Trades.co.uk"
                 fill
                 className="object-cover object-top"
                 sizes="(max-width: 768px) 100vw, 50vw"
-                onError={() => setBellaImageSrc("/placeholder-user.jpg")}
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_18%,transparent_60%,rgba(247,242,235,0.34)_82%,rgba(247,242,235,0.90)_100%)]" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] bg-gradient-to-t from-[#f7f2eb] via-[#f7f2eb]/70 to-transparent" />
@@ -110,22 +91,16 @@ export default function AboutPage() {
               <p className="font-display text-2xl font-bold">Graphic Designer</p>
               <p className="text-primary-foreground/80">Branding and visual direction</p>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="order-2 lg:order-2"
           >
             <SectionHeader
               title="Meet Bella"
               centered={false}
             />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <div
               className="max-w-3xl"
             >
               <p className="mb-6 text-lg leading-relaxed text-foreground">
@@ -137,8 +112,8 @@ export default function AboutPage() {
               <p className="text-lg leading-relaxed text-foreground">
                 Together, that means you get a website that not only works properly, but also looks sharp and represents your business the right way online.
               </p>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </SectionWrapper>
 
@@ -150,10 +125,7 @@ export default function AboutPage() {
               title="Why I Started Built4Trades.co.uk"
               centered={false}
             />
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+            <div
               className="max-w-3xl"
             >
               <p className="mb-6 text-lg leading-relaxed text-foreground">
@@ -168,13 +140,10 @@ export default function AboutPage() {
               <p className="text-lg leading-relaxed text-foreground">
                 If youre a tradesperson who wants a website that actually works for your business, without the hassle — Im here to help.
               </p>
-            </motion.div>
+            </div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="relative order-2 lg:order-2"
           >
             <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.16),transparent_34%),radial-gradient(circle_at_bottom,rgba(251,146,60,0.14),transparent_30%)] blur-2xl" />
@@ -191,16 +160,13 @@ export default function AboutPage() {
               <div className="pointer-events-none absolute inset-y-0 left-0 w-[12%] bg-gradient-to-r from-white/24 to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 w-[12%] bg-gradient-to-l from-white/20 to-transparent" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </SectionWrapper>
 
       {/* CTA */}
       <SectionWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6">
@@ -212,7 +178,7 @@ export default function AboutPage() {
           <Button asChild size="lg">
             <Link href="/contact">Get in Touch</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </>
   )

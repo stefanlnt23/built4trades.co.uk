@@ -1,7 +1,4 @@
-"use client"
-
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { TradeCard } from "@/components/trade-card"
 import { SectionWrapper, SectionHeader } from "@/components/section-wrapper"
@@ -45,10 +42,7 @@ export default function ServicesPage() {
       {/* Hero */}
       <section className="pt-28 lg:pt-36 pb-16 lg:pb-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-4xl"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
@@ -57,7 +51,7 @@ export default function ServicesPage() {
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl">
               A professional website that gets you found, makes you look the part, and brings in new customers. All for a simple monthly price with no hidden costs.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -65,19 +59,15 @@ export default function ServicesPage() {
       <SectionWrapper>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
             >
               <TradeCard
                 image={service.image}
                 title={service.title}
                 description={service.description}
               />
-            </motion.div>
+            </div>
           ))}
         </div>
       </SectionWrapper>
@@ -89,10 +79,7 @@ export default function ServicesPage() {
           subtitle="We're not a big agency churning out generic websites. We're specialists who understand trades businesses."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="text-center"
           >
             <div className="font-display text-5xl font-bold text-primary mb-4">1</div>
@@ -100,12 +87,8 @@ export default function ServicesPage() {
             <p className="text-muted-foreground">
               Every website is designed specifically for tradespeople. We know what works because it's all we do.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          </div>
+          <div
             className="text-center"
           >
             <div className="font-display text-5xl font-bold text-primary mb-4">2</div>
@@ -113,12 +96,8 @@ export default function ServicesPage() {
             <p className="text-muted-foreground">
               We speak plain English. You'll always know exactly what you're getting and what it costs.
             </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          </div>
+          <div
             className="text-center"
           >
             <div className="font-display text-5xl font-bold text-primary mb-4">3</div>
@@ -126,16 +105,13 @@ export default function ServicesPage() {
             <p className="text-muted-foreground">
               You deal with one person from start to finish. No being passed around departments.
             </p>
-          </motion.div>
+          </div>
         </div>
       </SectionWrapper>
 
       {/* CTA */}
       <SectionWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6">
@@ -147,7 +123,7 @@ export default function ServicesPage() {
           <Button asChild size="lg">
             <Link href="/contact">Get in Touch</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </>
   )

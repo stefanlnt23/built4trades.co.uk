@@ -1,7 +1,4 @@
-"use client"
-
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import {
   Accordion,
@@ -60,10 +57,7 @@ export default function FAQPage() {
       {/* Hero */}
       <section className="pt-28 lg:pt-36 pb-16 lg:pb-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-4xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
@@ -72,7 +66,7 @@ export default function FAQPage() {
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mx-auto">
               Everything you need to know about getting your trade business online.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -81,12 +75,8 @@ export default function FAQPage() {
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
               >
                 <AccordionItem value={`item-${index}`} className="border-border">
                   <AccordionTrigger className="text-left font-display text-base lg:text-lg font-semibold hover:no-underline hover:text-primary">
@@ -96,7 +86,7 @@ export default function FAQPage() {
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
-              </motion.div>
+              </div>
             ))}
           </Accordion>
         </div>
@@ -104,10 +94,7 @@ export default function FAQPage() {
 
       {/* CTA */}
       <SectionWrapper background="muted">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6">
@@ -119,7 +106,7 @@ export default function FAQPage() {
           <Button asChild size="lg">
             <Link href="/contact">Get in Touch</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </>
   )

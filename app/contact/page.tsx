@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { Phone, Mail, MessageCircle, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,10 +11,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="pt-28 lg:pt-36 pb-16 lg:pb-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-4xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
@@ -26,7 +20,7 @@ export default function ContactPage() {
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mx-auto">
               {"Fill in the form and I'll build you a free demo site within 48 hours — no payment, no obligation."}
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -34,10 +28,7 @@ export default function ContactPage() {
       <SectionWrapper>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto">
           {/* Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
           >
             <form className="space-y-6">
               <div className="space-y-2">
@@ -103,13 +94,10 @@ export default function ContactPage() {
                 Request Your Free Demo
               </Button>
             </form>
-          </motion.div>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="lg:pl-8"
           >
             <h2 className="font-display text-2xl font-bold text-foreground mb-6">
@@ -169,7 +157,7 @@ export default function ContactPage() {
                 {"I'll have a demo site ready for your trade within 48 hours of hearing from you. No messing about."}
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </SectionWrapper>
     </>

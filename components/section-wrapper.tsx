@@ -1,6 +1,3 @@
-"use client"
-
-import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 interface SectionWrapperProps {
@@ -20,7 +17,7 @@ export function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "py-16 lg:py-24",
+        "py-16 lg:py-24 cv-auto",
         {
           "bg-background": background === "default",
           "bg-muted": background === "muted",
@@ -48,11 +45,7 @@ export function SectionHeader({
   className,
 }: SectionHeaderProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
+    <div
       className={cn(
         "mb-10 lg:mb-14",
         centered && "text-center max-w-3xl mx-auto",
@@ -67,6 +60,6 @@ export function SectionHeader({
           {subtitle}
         </p>
       )}
-    </motion.div>
+    </div>
   )
 }

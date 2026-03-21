@@ -1,8 +1,5 @@
-"use client"
-
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Star, CheckCircle2, XCircle, MapPin, Monitor, Smartphone, Search, PhoneCall, Server, Headphones } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { TradeCard } from "@/components/trade-card"
@@ -276,14 +273,12 @@ export default function HomePage() {
           fill
           className="object-cover"
           priority
+          quality={75}
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          <div
             className="max-w-4xl mx-auto"
           >
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground mb-6 text-balance">
@@ -305,17 +300,14 @@ export default function HomePage() {
                 <Link href="/portfolio">See Our Work</Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Trust Bar */}
       <section className="bg-secondary py-6 lg:py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+          <div
             className="text-center"
           >
             <p className="text-secondary-foreground/80 text-sm mb-4">
@@ -331,7 +323,7 @@ export default function HomePage() {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -364,24 +356,17 @@ export default function HomePage() {
 
       {/* Why No Website Is Costing You Work */}
       <SectionWrapper background="secondary">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mb-12"
         >
           <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-balance mb-4">
             Every Day Without a Website Is a Day Your Competition Gets the Call
           </h2>
-        </motion.div>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
           {stats.map((item, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="text-center p-6 rounded-xl bg-secondary-foreground/5"
             >
               <div className="font-display text-4xl lg:text-5xl font-bold text-primary mb-3">
@@ -390,13 +375,10 @@ export default function HomePage() {
               <p className="text-secondary-foreground/80 text-sm lg:text-base">
                 {item.text}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center"
         >
           <p className="text-xl lg:text-2xl font-medium text-secondary-foreground mb-6">
@@ -405,7 +387,7 @@ export default function HomePage() {
           <Button asChild size="lg">
             <Link href="/contact">Get Yours Today</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
 
       {/* What You Get */}
@@ -415,10 +397,7 @@ export default function HomePage() {
           subtitle="No technical jargon. No hidden costs. Just everything you need to get found and get hired."
         />
         <div className="space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
+          <div
             className="relative px-2 py-4 sm:px-4"
           >
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.82),transparent_34%),radial-gradient(circle_at_bottom,rgba(247,242,235,0.78),transparent_24%)]" />
@@ -476,6 +455,7 @@ export default function HomePage() {
                     alt=""
                     fill
                     className="object-cover"
+                    quality={60}
                     sizes="(max-width: 1200px) 90vw, 1280px"
                   />
                 </div>
@@ -485,6 +465,7 @@ export default function HomePage() {
                     alt=""
                     fill
                     className="object-cover"
+                    quality={60}
                     sizes="(max-width: 768px) 100vw, 90vw"
                   />
                 </div>
@@ -495,7 +476,7 @@ export default function HomePage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 1200px) 90vw, 1280px"
-                    priority={false}
+                    quality={80}
                   />
                 </div>
                 <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:hidden [mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)]">
@@ -505,7 +486,7 @@ export default function HomePage() {
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 90vw"
-                    priority={false}
+                    quality={80}
                   />
                 </div>
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.28),transparent_26%),linear-gradient(180deg,rgba(248,243,236,0.08),transparent_20%,transparent_82%,rgba(248,243,236,0.12)_100%)]" />
@@ -521,12 +502,8 @@ export default function HomePage() {
                   const Icon = feature.icon
 
                   return (
-                    <motion.div
+                    <div
                       key={feature.title}
-                      initial={{ opacity: 0, y: 16 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ delay: index * 0.06 }}
                       className={`absolute ${feature.positionClass}`}
                     >
                       <div className="relative">
@@ -553,24 +530,20 @@ export default function HomePage() {
                           </div>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
                   )
                 })}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:hidden">
             {features.map((feature, index) => {
               const Icon = feature.icon
 
               return (
-                <motion.div
+                <div
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ delay: index * 0.05 }}
                   className="flex items-start gap-3"
                 >
                   <div className={`mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm ${feature.iconColor}`}>
@@ -587,7 +560,7 @@ export default function HomePage() {
                       {feature.description}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>
@@ -604,12 +577,8 @@ export default function HomePage() {
           <div className="pointer-events-none absolute left-[16.66%] right-[16.66%] top-11 hidden h-px bg-gradient-to-r from-orange-200 via-stone-300 to-emerald-200 lg:block" />
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
             {howItWorks.map((step, index) => (
-              <motion.div
+              <div
                 key={step.step}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.08 }}
                 className={`relative h-full transform-gpu transition-transform duration-300 ${step.tiltClassName}`}
               >
                 <div className={`absolute inset-x-5 top-5 h-32 rounded-[2rem] bg-gradient-to-br ${step.accentClassName} blur-2xl opacity-80`} />
@@ -633,7 +602,7 @@ export default function HomePage() {
                     {index === howItWorks.length - 1 ? "Go Live" : "Next Step"}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -650,11 +619,7 @@ export default function HomePage() {
 
           <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.95fr)_auto_minmax(0,1.05fr)] lg:items-center">
             {/* Without */}
-            <motion.div
-              initial={{ opacity: 0, x: -20, rotate: -3 }}
-              whileInView={{ opacity: 1, x: 0, rotate: -2 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.45 }}
+            <div
               className="relative lg:mt-10"
             >
               <div className="absolute inset-4 rounded-[2rem] bg-stone-300/45 blur-2xl" />
@@ -685,13 +650,9 @@ export default function HomePage() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-120px" }}
-              transition={{ delay: 0.08, duration: 0.35 }}
+            <div
               className="relative z-10 mx-auto hidden lg:flex"
             >
               <div className="flex h-24 w-24 items-center justify-center rounded-full border border-primary/25 bg-white/90 shadow-[0_18px_45px_rgba(15,23,42,0.12)] backdrop-blur-sm">
@@ -699,14 +660,10 @@ export default function HomePage() {
                   vs
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* With */}
-            <motion.div
-              initial={{ opacity: 0, x: 20, rotate: 3 }}
-              whileInView={{ opacity: 1, x: 0, rotate: 2 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.45, delay: 0.08 }}
+            <div
               className="relative lg:-mt-8"
             >
               <div className="absolute inset-4 rounded-[2rem] bg-primary/20 blur-2xl" />
@@ -737,7 +694,7 @@ export default function HomePage() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </SectionWrapper>
@@ -750,12 +707,8 @@ export default function HomePage() {
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {reviews.map((review, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="bg-card rounded-xl p-6 border border-border shadow-sm"
             >
               <div className="flex items-center gap-2 mb-4">
@@ -778,7 +731,7 @@ export default function HomePage() {
                 <p className="font-semibold text-foreground">{review.name}</p>
                 <p className="text-sm text-muted-foreground">{review.trade}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </SectionWrapper>
@@ -789,10 +742,7 @@ export default function HomePage() {
           title="Based in Coventry. Building for the Whole of the UK."
           subtitle="Whether you're a plumber in Manchester, an electrician in Bristol, or a mechanic in Glasgow — we build websites for tradespeople all over the UK. Everything is handled remotely. You never need to leave your van."
         />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="flex flex-wrap items-center justify-center gap-3"
         >
           {cities.map((city) => (
@@ -804,15 +754,12 @@ export default function HomePage() {
               {city}
             </span>
           ))}
-        </motion.div>
+        </div>
       </SectionWrapper>
 
       {/* Final CTA */}
       <SectionWrapper background="secondary">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
@@ -824,7 +771,7 @@ export default function HomePage() {
           <Button asChild size="lg" className="text-lg px-8 py-6">
             <Link href="/contact">Request Your Free Demo</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </>
   )

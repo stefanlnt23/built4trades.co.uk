@@ -1,7 +1,4 @@
-"use client"
-
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { Check, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SectionWrapper } from "@/components/section-wrapper"
@@ -113,10 +110,7 @@ export default function PricingPage() {
       {/* Hero */}
       <section className="pt-28 lg:pt-36 pb-16 lg:pb-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-4xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
@@ -125,16 +119,13 @@ export default function PricingPage() {
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mx-auto">
               No setup fees. No contracts. No hidden costs. Just a flat monthly price that includes everything.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Pricing Comparison */}
       <SectionWrapper>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="mx-auto max-w-6xl overflow-hidden rounded-3xl border border-border bg-card shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
         >
           <div className="overflow-x-auto">
@@ -214,13 +205,10 @@ export default function PricingPage() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Additional Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mt-12 max-w-2xl mx-auto"
         >
           <p className="text-primary font-semibold mb-4">
@@ -229,15 +217,12 @@ export default function PricingPage() {
           <p className="text-muted-foreground text-sm">
             No contracts. Cancel anytime. All prices include UK hosting and support.
           </p>
-        </motion.div>
+        </div>
       </SectionWrapper>
 
       {/* FAQ Teaser */}
       <SectionWrapper background="muted">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center max-w-2xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6">
@@ -249,7 +234,7 @@ export default function PricingPage() {
           <Button asChild size="lg">
             <Link href="/contact">Request Your Free Demo</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </>
   )

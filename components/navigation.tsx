@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
-import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -26,11 +25,23 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      const hasScrolled = window.scrollY > 20
+      setIsScrolled((current) => (current === hasScrolled ? current : hasScrolled))
     }
+    let ticking = false
+
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(() => {
+        handleScroll()
+        ticking = false
+      })
+    }
+
     handleScroll()
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   useEffect(() => {
@@ -111,55 +122,51 @@ export function Navigation() {
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            id="mobile-navigation"
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-xl lg:hidden"
-          >
-            <div className="flex flex-col h-full pt-20 pb-6 px-6">
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={cn(
-                      "px-4 py-3 text-lg font-medium rounded-lg transition-colors",
-                      pathname === link.href
-                        ? "text-primary bg-primary/10"
-                        : "text-foreground hover:bg-muted"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="mt-auto pt-6 border-t border-border">
-                <Button asChild className="w-full" size="lg">
-                  <Link href="/contact">Get a Free Demo</Link>
-                </Button>
-              </div>
-            </div>
-          </motion.div>
+      <div
+        id="mobile-navigation"
+        className={cn(
+          "fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-xl lg:hidden",
+          "transform-gpu transition-transform duration-300 ease-out",
+          isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"
         )}
-      </AnimatePresence>
+        aria-hidden={!isOpen}
+      >
+        <div className="flex h-full flex-col px-6 pt-20 pb-6">
+          <div className="flex flex-col gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "px-4 py-3 text-lg font-medium rounded-lg transition-colors",
+                  pathname === link.href
+                    ? "text-primary bg-primary/10"
+                    : "text-foreground hover:bg-muted"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <div className="mt-auto pt-6 border-t border-border">
+            <Button asChild className="w-full" size="lg">
+              <Link href="/contact">Get a Free Demo</Link>
+            </Button>
+          </div>
+        </div>
+      </div>
 
       {/* Mobile Overlay */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
-          />
+      <button
+        type="button"
+        aria-label="Close menu overlay"
+        onClick={() => setIsOpen(false)}
+        className={cn(
+          "fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden",
+          "transition-opacity duration-200",
+          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         )}
-      </AnimatePresence>
+      />
     </header>
   )
 }

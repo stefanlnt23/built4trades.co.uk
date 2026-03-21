@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { AnimatePresence, motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SectionWrapper } from "@/components/section-wrapper"
@@ -44,6 +43,7 @@ function RotatingPortfolioImage({
 }) {
   const [shuffledImages, setShuffledImages] = useState(images)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isAutoRotateEnabled, setIsAutoRotateEnabled] = useState(false)
 
   useEffect(() => {
     setShuffledImages(shuffleImages(images))
@@ -51,6 +51,20 @@ function RotatingPortfolioImage({
   }, [images])
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)")
+    const applyPreference = () => setIsAutoRotateEnabled(mediaQuery.matches)
+
+    applyPreference()
+    mediaQuery.addEventListener("change", applyPreference)
+
+    return () => mediaQuery.removeEventListener("change", applyPreference)
+  }, [])
+
+  useEffect(() => {
+    if (!isAutoRotateEnabled) {
+      return
+    }
+
     if (shuffledImages.length < 2) {
       return
     }
@@ -60,30 +74,20 @@ function RotatingPortfolioImage({
     }, getRandomSlideDelay())
 
     return () => window.clearTimeout(timeout)
-  }, [activeIndex, shuffledImages])
+  }, [activeIndex, shuffledImages, isAutoRotateEnabled])
 
   return (
-    <AnimatePresence initial={false}>
-      <motion.div
-        key={shuffledImages[activeIndex]}
-        initial={{ x: "100%" }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ x: "-100%" }}
-        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 will-change-transform"
-        style={{ zIndex: 1 }}
-      >
-        <Image
-          src={shuffledImages[activeIndex]}
-          alt={alt}
-          fill
-          priority={priority && activeIndex === 0}
-          quality={88}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </motion.div>
-    </AnimatePresence>
+    <div className="absolute inset-0 will-change-transform" style={{ zIndex: 1 }}>
+      <Image
+        src={shuffledImages[activeIndex]}
+        alt={alt}
+        fill
+        priority={priority && activeIndex === 0}
+        quality={80}
+        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      />
+    </div>
   )
 }
 
@@ -165,10 +169,7 @@ export default function PortfolioPage() {
       {/* Hero */}
       <section className="pt-28 lg:pt-36 pb-16 lg:pb-24 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="max-w-4xl mx-auto text-center"
           >
             <h1 className="font-display text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-6">
@@ -177,7 +178,7 @@ export default function PortfolioPage() {
             <p className="text-muted-foreground text-lg lg:text-xl max-w-2xl mx-auto">
               These are real sites built for real businesses. Want your business featured next?
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -187,12 +188,8 @@ export default function PortfolioPage() {
           {portfolioItems.map((item, index) => {
             if (item.promo) {
               return (
-                <motion.div
+                <div
                   key={item.businessName || item.url || index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
                   className="group flex min-h-[28rem] flex-col justify-between rounded-xl border border-primary/20 bg-gradient-to-br from-orange-50 via-card to-amber-50 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/10 lg:p-8"
                 >
                   <div>
@@ -209,7 +206,7 @@ export default function PortfolioPage() {
                   <Button asChild size="lg" className="mt-8 w-full sm:w-fit">
                     <Link href={item.url ?? "/contact"}>Claim Now</Link>
                   </Button>
-                </motion.div>
+                </div>
               )
             }
 
@@ -217,12 +214,8 @@ export default function PortfolioPage() {
             const usesCarousel = Boolean(item.images && item.images.length > 1)
             const shouldStretchImage = !hasContent && !usesCarousel
             return (
-              <motion.div
+              <div
                 key={item.businessName || item.url || index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
                 className="group bg-card rounded-xl border border-border overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className={`relative overflow-hidden ${hasContent ? "aspect-video" : "h-full min-h-[28rem]"}`}>
@@ -230,15 +223,15 @@ export default function PortfolioPage() {
                     <RotatingPortfolioImage
                       images={item.images ?? []}
                       alt={item.businessName || "Portfolio image"}
-                      priority={index < 2}
+                      priority={index === 0}
                     />
                 ) : (
                   <Image
                     src={item.image ?? item.images?.[0] ?? "/placeholder.jpg"}
                     alt={item.businessName || "Portfolio image"}
                     fill
-                    priority={index < 2}
-                    quality={88}
+                    priority={index === 0}
+                    quality={80}
                     className={`${shouldStretchImage ? "object-fill scale-[1.38]" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
@@ -279,7 +272,7 @@ export default function PortfolioPage() {
                     )}
                   </div>
                 )}
-              </motion.div>
+              </div>
             )
           })}
         </div>
@@ -287,10 +280,7 @@ export default function PortfolioPage() {
 
       {/* CTA Banner */}
       <SectionWrapper background="secondary">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center max-w-3xl mx-auto"
         >
           <h2 className="font-display text-3xl lg:text-4xl font-bold mb-6">
@@ -302,7 +292,7 @@ export default function PortfolioPage() {
           <Button asChild size="lg">
             <Link href="/contact">Claim Your Spot</Link>
           </Button>
-        </motion.div>
+        </div>
       </SectionWrapper>
     </>
   )
