@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
+import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 
 interface TradeCardProps {
@@ -41,12 +42,14 @@ export function TradeCard({
   titleClassName,
   descriptionClassName,
 }: TradeCardProps) {
+  const isMobile = useIsMobile()
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5 }}
+      initial={isMobile ? false : { opacity: 0, y: 20 }}
+      whileInView={isMobile ? undefined : { opacity: 1, y: 0 }}
+      viewport={isMobile ? undefined : { once: true, margin: "-50px" }}
+      transition={isMobile ? undefined : { duration: 0.5 }}
       className={cn(
         "group rounded-[1.75rem] transition-all duration-300 hover:-translate-y-1",
         className

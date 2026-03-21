@@ -28,6 +28,7 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
     }
+    handleScroll()
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -36,13 +37,21 @@ export function Navigation() {
     setIsOpen(false)
   }, [pathname])
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : ""
+
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
+
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
+        "fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md shadow-sm transition-all duration-300 lg:border-b-0 lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none",
+        (isScrolled || isOpen)
           ? "bg-card/95 backdrop-blur-md shadow-sm border-b border-border"
-          : "bg-transparent"
+          : "lg:bg-transparent lg:shadow-none"
       )}
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,9 +99,11 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="lg:hidden rounded-lg border border-border bg-background/90 p-2 text-foreground shadow-sm backdrop-blur-sm transition-colors hover:text-primary"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -103,11 +114,12 @@ export function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 w-full max-w-sm bg-card shadow-xl lg:hidden border-l border-border"
+            className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-xl lg:hidden"
           >
             <div className="flex flex-col h-full pt-20 pb-6 px-6">
               <div className="flex flex-col gap-2">
@@ -144,7 +156,7 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-foreground/20 backdrop-blur-sm lg:hidden z-[-1]"
+            className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
           />
         )}
       </AnimatePresence>
