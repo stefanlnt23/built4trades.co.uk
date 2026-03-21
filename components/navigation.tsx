@@ -20,29 +20,7 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const hasScrolled = window.scrollY > 20
-      setIsScrolled((current) => (current === hasScrolled ? current : hasScrolled))
-    }
-    let ticking = false
-
-    const onScroll = () => {
-      if (ticking) return
-      ticking = true
-      window.requestAnimationFrame(() => {
-        handleScroll()
-        ticking = false
-      })
-    }
-
-    handleScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   useEffect(() => {
     setIsOpen(false)
@@ -58,12 +36,7 @@ export function Navigation() {
 
   return (
     <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card shadow-sm lg:border-b-0 lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none",
-        (isScrolled || isOpen)
-          ? "bg-card shadow-sm border-b border-border lg:bg-card/95 lg:backdrop-blur-md"
-          : "lg:bg-transparent lg:shadow-none"
-      )}
+      className="fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card shadow-sm"
     >
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
