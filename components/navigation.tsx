@@ -59,7 +59,7 @@ export function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md shadow-sm transition-all duration-300 lg:border-b-0 lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none",
+        "fixed top-0 left-0 right-0 z-50 border-b border-border bg-card/95 backdrop-blur-md shadow-sm lg:border-b-0 lg:bg-transparent lg:backdrop-blur-0 lg:shadow-none",
         (isScrolled || isOpen)
           ? "bg-card/95 backdrop-blur-md shadow-sm border-b border-border"
           : "lg:bg-transparent lg:shadow-none"
@@ -70,7 +70,7 @@ export function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center shrink-0 transition-opacity hover:opacity-90"
+            className="flex items-center shrink-0"
             aria-label="Built4Trades.co.uk home"
           >
             <Image
@@ -90,7 +90,7 @@ export function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-lg transition-colors",
+                  "px-4 py-2 text-sm font-medium rounded-lg",
                   pathname === link.href
                     ? "text-primary bg-primary/10"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -110,7 +110,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden rounded-lg border border-border bg-background/90 p-2 text-foreground shadow-sm backdrop-blur-sm transition-colors hover:text-primary"
+            className="lg:hidden rounded-lg border border-primary/30 bg-card p-2 text-primary shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -122,51 +122,47 @@ export function Navigation() {
       </nav>
 
       {/* Mobile Menu */}
-      <div
-        id="mobile-navigation"
-        className={cn(
-          "fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-xl lg:hidden",
-          "transform-gpu transition-transform duration-300 ease-out",
-          isOpen ? "translate-x-0 pointer-events-auto" : "translate-x-full pointer-events-none"
-        )}
-        aria-hidden={!isOpen}
-      >
-        <div className="flex h-full flex-col px-6 pt-20 pb-6">
-          <div className="flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "px-4 py-3 text-lg font-medium rounded-lg transition-colors",
-                  pathname === link.href
-                    ? "text-primary bg-primary/10"
-                    : "text-foreground hover:bg-muted"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-auto pt-6 border-t border-border">
-            <Button asChild className="w-full" size="lg">
-              <Link href="/contact">Get a Free Demo</Link>
-            </Button>
+      {isOpen && (
+        <div
+          id="mobile-navigation"
+          className="fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-border bg-card shadow-xl lg:hidden"
+          aria-hidden={!isOpen}
+        >
+          <div className="flex h-full flex-col px-6 pt-20 pb-6">
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "px-4 py-3 text-lg font-medium rounded-lg",
+                    pathname === link.href
+                      ? "text-primary bg-primary/10"
+                      : "text-foreground hover:bg-muted"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="mt-auto pt-6 border-t border-border">
+              <Button asChild className="w-full" size="lg">
+                <Link href="/contact">Get a Free Demo</Link>
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Mobile Overlay */}
-      <button
-        type="button"
-        aria-label="Close menu overlay"
-        onClick={() => setIsOpen(false)}
-        className={cn(
-          "fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden",
-          "transition-opacity duration-200",
-          isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        )}
-      />
+      {isOpen && (
+        <button
+          type="button"
+          aria-label="Close menu overlay"
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden"
+        />
+      )}
     </header>
   )
 }
