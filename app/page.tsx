@@ -364,8 +364,8 @@ export default function HomePage() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-6 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.12),transparent_32%)] blur-2xl" />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-stone-200/80 bg-white/90 p-3 shadow-[0_30px_80px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:rounded-[2rem] sm:p-5">
+            <div className="absolute -inset-6 hidden rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.12),transparent_32%)] blur-2xl sm:block" />
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-stone-200/80 bg-white/90 p-3 shadow-[0_18px_40px_rgba(15,23,42,0.10)] sm:shadow-[0_30px_80px_rgba(15,23,42,0.12)] sm:backdrop-blur-sm sm:rounded-[2rem] sm:p-5">
               <div className="mb-3 flex items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-stone-50/80 px-3 py-2.5 sm:mb-4 sm:gap-4 sm:px-4 sm:py-3">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">Live Client Site</p>
@@ -605,16 +605,6 @@ export default function HomePage() {
                     sizes="(max-width: 1200px) 90vw, 1280px"
                   />
                 </div>
-                <div className="pointer-events-none absolute inset-0 scale-[1.08] blur-3xl opacity-55 lg:hidden">
-                  <Image
-                    src="/image-mobile-v2.png"
-                    alt=""
-                    fill
-                    className="object-cover"
-                    quality={60}
-                    sizes="(max-width: 768px) 100vw, 90vw"
-                  />
-                </div>
                 <div className="relative aspect-[3/2] hidden lg:block [mask-image:radial-gradient(circle_at_center,black_55%,transparent_88%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_55%,transparent_88%)]">
                   <Image
                     src="/image-desktop-v2.png"
@@ -625,7 +615,7 @@ export default function HomePage() {
                     quality={80}
                   />
                 </div>
-                <div className="relative aspect-[5/6] sm:aspect-[3/4] lg:hidden [mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)]">
+                <div className="relative aspect-[5/6] sm:aspect-[3/4] lg:hidden">
                   <Image
                     src="/image-mobile-v2.png"
                     alt="Trades website mobile visual showing local visibility and customer contact options"
@@ -727,8 +717,8 @@ export default function HomePage() {
                 key={step.step}
                 className={`relative h-full transform-gpu transition-transform duration-300 ${step.tiltClassName}`}
               >
-                <div className={`absolute inset-x-5 top-5 h-24 rounded-[2rem] bg-gradient-to-br ${step.accentClassName} blur-2xl opacity-80 sm:h-32`} />
-                <div className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-stone-200/80 bg-white/90 p-4 shadow-[0_22px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm sm:rounded-[2rem] sm:p-5 lg:p-7">
+                <div className={`absolute inset-x-5 top-5 hidden h-24 rounded-[2rem] bg-gradient-to-br ${step.accentClassName} opacity-80 blur-2xl sm:block sm:h-32`} />
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-stone-200/80 bg-white p-4 shadow-[0_14px_32px_rgba(15,23,42,0.08)] sm:rounded-[2rem] sm:bg-white/90 sm:p-5 sm:shadow-[0_22px_60px_rgba(15,23,42,0.08)] sm:backdrop-blur-sm lg:p-7">
                   <div className="mb-4 flex items-center justify-between gap-4 sm:mb-6">
                     <span className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] sm:text-[11px] ${step.badgeClassName}`}>
                       Step {step.step}
@@ -762,7 +752,7 @@ export default function HomePage() {
         />
         <div className="grid gap-8 lg:grid-cols-[minmax(320px,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10">
           <div className="relative">
-            <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_34%)] blur-2xl" />
+            <div className="absolute -inset-5 hidden rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_34%)] blur-2xl sm:block" />
             <div className="relative h-[360px] overflow-hidden rounded-[1.75rem] border border-white/55 bg-[linear-gradient(180deg,rgba(255,248,240,0.96),rgba(241,235,226,0.96))] shadow-[0_28px_70px_rgba(15,23,42,0.10)] sm:h-auto sm:aspect-[4/4.7] sm:rounded-[2rem]">
               <Image
                 src="/me.png"

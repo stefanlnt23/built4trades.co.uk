@@ -120,7 +120,7 @@ const comparisonPoints = [
 function ServiceVisual({ service }: { service: (typeof services)[number] }) {
   if (service.visual === "website") {
     return (
-      <div className="relative h-[200px] overflow-hidden rounded-[1.25rem] border border-stone-200 bg-stone-100 shadow-[0_22px_50px_rgba(15,23,42,0.10)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem]">
+      <div className="relative h-[200px] overflow-hidden rounded-[1.25rem] border border-stone-200 bg-stone-100 shadow-[0_14px_30px_rgba(15,23,42,0.08)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:shadow-[0_22px_50px_rgba(15,23,42,0.10)]">
         <Image
           src={service.image}
           alt={service.imageAlt}
@@ -128,7 +128,7 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
           className="object-cover object-top"
           sizes="(max-width: 1024px) 100vw, 33vw"
         />
-        <div className="absolute inset-x-0 top-0 flex items-center gap-1.5 bg-white/88 px-3 py-2.5 backdrop-blur-sm sm:px-4 sm:py-3">
+        <div className="absolute inset-x-0 top-0 flex items-center gap-1.5 bg-white/92 px-3 py-2.5 sm:bg-white/88 sm:px-4 sm:py-3 sm:backdrop-blur-sm">
           <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
           <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
           <span className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
@@ -140,14 +140,14 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
 
   if (service.visual === "mobile") {
     return (
-      <div className="relative min-h-[260px] overflow-hidden rounded-[1.25rem] border border-stone-200/80 bg-[linear-gradient(180deg,#fcfcfb_0%,#f5f5f4_100%)] p-3 shadow-[0_22px_50px_rgba(120,113,108,0.08)] sm:min-h-[340px] sm:rounded-[1.5rem] sm:p-4">
+      <div className="relative min-h-[260px] overflow-hidden rounded-[1.25rem] border border-stone-200/80 bg-[linear-gradient(180deg,#fcfcfb_0%,#f5f5f4_100%)] p-3 shadow-[0_14px_32px_rgba(120,113,108,0.08)] sm:min-h-[340px] sm:rounded-[1.5rem] sm:p-4 sm:shadow-[0_22px_50px_rgba(120,113,108,0.08)]">
         <div className="absolute left-3 top-3 z-20 rounded-full border border-stone-200 bg-white/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-stone-700 shadow-sm sm:left-4 sm:top-4 sm:px-3 sm:text-[11px]">
           Mobile Preview
         </div>
-        <div className="absolute bottom-5 left-5 h-14 w-14 rounded-full bg-orange-100/60 blur-2xl sm:bottom-6 sm:left-6 sm:h-16 sm:w-16" />
-        <div className="absolute right-5 top-5 h-16 w-16 rounded-full bg-stone-200/70 blur-2xl sm:right-6 sm:top-6 sm:h-20 sm:w-20" />
+        <div className="absolute bottom-5 left-5 hidden h-14 w-14 rounded-full bg-orange-100/60 blur-2xl sm:block sm:bottom-6 sm:left-6 sm:h-16 sm:w-16" />
+        <div className="absolute right-5 top-5 hidden h-16 w-16 rounded-full bg-stone-200/70 blur-2xl sm:block sm:right-6 sm:top-6 sm:h-20 sm:w-20" />
         <div className="relative z-10 mx-auto flex h-full w-full max-w-[185px] items-center justify-center pt-7 sm:max-w-[220px] sm:pt-8">
-          <div className="relative h-full min-h-[215px] w-full overflow-hidden rounded-[2rem] border-[7px] border-stone-200 bg-white p-1.5 shadow-[0_24px_45px_rgba(120,113,108,0.18)] sm:min-h-[290px] sm:rounded-[2.25rem] sm:border-[8px]">
+          <div className="relative h-full min-h-[215px] w-full overflow-hidden rounded-[2rem] border-[7px] border-stone-200 bg-white p-1.5 shadow-[0_16px_28px_rgba(120,113,108,0.14)] sm:min-h-[290px] sm:rounded-[2.25rem] sm:border-[8px] sm:shadow-[0_24px_45px_rgba(120,113,108,0.18)]">
             <Image
               src={service.image}
               alt={service.imageAlt}
@@ -157,7 +157,7 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
             />
             <div className="absolute inset-x-0 top-0 h-10 rounded-t-[1.5rem] bg-gradient-to-b from-stone-900/12 to-transparent sm:h-12 sm:rounded-t-[1.75rem]" />
             <div className="absolute left-1/2 top-2.5 h-1.5 w-16 -translate-x-1/2 rounded-full bg-stone-300" />
-            <div className="absolute inset-x-2.5 bottom-2.5 z-20 rounded-[1rem] border border-white/60 bg-white/92 px-2.5 py-2 shadow-lg backdrop-blur-sm sm:inset-x-3 sm:bottom-3 sm:rounded-[1.1rem] sm:px-3">
+            <div className="absolute inset-x-2.5 bottom-2.5 z-20 rounded-[1rem] border border-white/60 bg-white/95 px-2.5 py-2 shadow-md sm:inset-x-3 sm:bottom-3 sm:rounded-[1.1rem] sm:bg-white/92 sm:px-3 sm:shadow-lg sm:backdrop-blur-sm">
               <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-stone-500">Real Mobile View</p>
               <p className="mt-1 text-xs font-medium text-foreground">Your site stays clear, fast, and easy to use on the go.</p>
             </div>
@@ -169,7 +169,7 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
 
   if (service.visual === "search") {
     return (
-      <div className="relative h-[200px] rounded-[1.25rem] border border-emerald-200/70 bg-[radial-gradient(circle_at_top,rgba(74,222,128,0.16),transparent_34%),linear-gradient(180deg,#f7fdf8_0%,#edf9f0_100%)] p-3 shadow-[0_22px_50px_rgba(22,101,52,0.10)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:p-4">
+      <div className="relative h-[200px] rounded-[1.25rem] border border-emerald-200/70 bg-[linear-gradient(180deg,#f7fdf8_0%,#edf9f0_100%)] p-3 shadow-[0_14px_30px_rgba(22,101,52,0.08)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:bg-[radial-gradient(circle_at_top,rgba(74,222,128,0.16),transparent_34%),linear-gradient(180deg,#f7fdf8_0%,#edf9f0_100%)] sm:p-4 sm:shadow-[0_22px_50px_rgba(22,101,52,0.10)]">
         <div className="rounded-[1rem] border border-stone-200 bg-white p-3 shadow-sm sm:rounded-[1.2rem] sm:p-4">
           <div className="flex items-center gap-2 rounded-full border border-stone-200 bg-stone-50 px-3 py-2 text-xs text-stone-500 sm:px-4 sm:text-sm">
             <Search className="h-4 w-4 text-stone-400" />
@@ -195,7 +195,7 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
 
   if (service.visual === "contact") {
     return (
-      <div className="relative h-[200px] rounded-[1.25rem] border border-orange-200/70 bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.16),transparent_36%),linear-gradient(180deg,#fffaf5_0%,#fff2e7_100%)] p-4 shadow-[0_22px_50px_rgba(194,65,12,0.10)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:p-5">
+      <div className="relative h-[200px] rounded-[1.25rem] border border-orange-200/70 bg-[linear-gradient(180deg,#fffaf5_0%,#fff2e7_100%)] p-4 shadow-[0_14px_30px_rgba(194,65,12,0.08)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.16),transparent_36%),linear-gradient(180deg,#fffaf5_0%,#fff2e7_100%)] sm:p-5 sm:shadow-[0_22px_50px_rgba(194,65,12,0.10)]">
         <div className="mx-auto aspect-[9/18.5] h-full max-h-[170px] w-[104px] overflow-hidden rounded-[1.6rem] border-[6px] border-stone-900 bg-stone-900 p-1.5 shadow-[0_24px_45px_rgba(15,23,42,0.18)] sm:max-h-[260px] sm:w-[150px] sm:rounded-[2rem] sm:border-[7px]">
           <div className="relative h-full overflow-hidden rounded-[1.5rem] bg-white p-3">
             <div className="space-y-1.5">
@@ -222,7 +222,7 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
 
   if (service.visual === "maintenance") {
     return (
-      <div className="relative min-h-[230px] rounded-[1.25rem] border border-slate-200/80 bg-[radial-gradient(circle_at_top,rgba(148,163,184,0.18),transparent_34%),linear-gradient(180deg,#fafbfd_0%,#f2f6fb_100%)] p-4 shadow-[0_22px_50px_rgba(51,65,85,0.10)] sm:min-h-[320px] sm:rounded-[1.5rem] sm:p-5">
+      <div className="relative min-h-[230px] rounded-[1.25rem] border border-slate-200/80 bg-[linear-gradient(180deg,#fafbfd_0%,#f2f6fb_100%)] p-4 shadow-[0_14px_30px_rgba(51,65,85,0.08)] sm:min-h-[320px] sm:rounded-[1.5rem] sm:bg-[radial-gradient(circle_at_top,rgba(148,163,184,0.18),transparent_34%),linear-gradient(180deg,#fafbfd_0%,#f2f6fb_100%)] sm:p-5 sm:shadow-[0_22px_50px_rgba(51,65,85,0.10)]">
         <div className="flex h-full min-h-[190px] flex-col rounded-[1.15rem] border border-slate-200 bg-white p-4 sm:min-h-[280px] sm:rounded-[1.4rem] sm:p-5">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white sm:h-11 sm:w-11">
@@ -247,7 +247,7 @@ function ServiceVisual({ service }: { service: (typeof services)[number] }) {
   }
 
   return (
-    <div className="relative h-[200px] rounded-[1.25rem] border border-teal-200/70 bg-[radial-gradient(circle_at_top,rgba(45,212,191,0.16),transparent_34%),linear-gradient(180deg,#f6fffd_0%,#ebfbf7_100%)] p-4 shadow-[0_22px_50px_rgba(13,148,136,0.10)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:p-5">
+    <div className="relative h-[200px] rounded-[1.25rem] border border-teal-200/70 bg-[linear-gradient(180deg,#f6fffd_0%,#ebfbf7_100%)] p-4 shadow-[0_14px_30px_rgba(13,148,136,0.08)] sm:h-auto sm:aspect-[16/10] sm:rounded-[1.5rem] sm:bg-[radial-gradient(circle_at_top,rgba(45,212,191,0.16),transparent_34%),linear-gradient(180deg,#f6fffd_0%,#ebfbf7_100%)] sm:p-5 sm:shadow-[0_22px_50px_rgba(13,148,136,0.10)]">
       <div className="flex h-full flex-col rounded-[1.15rem] border border-teal-100 bg-white p-3 sm:rounded-[1.4rem] sm:p-4">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
