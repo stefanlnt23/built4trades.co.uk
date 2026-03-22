@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -22,9 +22,6 @@ const navLinks = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolling, setIsScrolling] = useState(false)
-  const [arrowTarget, setArrowTarget] = useState<{ x: number; y: number } | null>(null)
-  const [viewportSize, setViewportSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 })
-  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
 
@@ -71,51 +68,10 @@ export function Navigation() {
     }
   }, [isHomePage])
 
-  useEffect(() => {
-    if (!isHomePage || isOpen) {
-      setArrowTarget(null)
-      return
-    }
-
-    const updateArrowTarget = () => {
-      const button = mobileMenuButtonRef.current
-
-      setViewportSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
-
-      if (!button || window.innerWidth >= 1024) {
-        setArrowTarget(null)
-        return
-      }
-
-      const rect = button.getBoundingClientRect()
-
-      setArrowTarget({
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
-      })
-    }
-
-    updateArrowTarget()
-    window.addEventListener("resize", updateArrowTarget)
-    window.addEventListener("orientationchange", updateArrowTarget)
-
-    return () => {
-      window.removeEventListener("resize", updateArrowTarget)
-      window.removeEventListener("orientationchange", updateArrowTarget)
-    }
-  }, [isHomePage, isOpen])
-
   return (
     <header
       className="fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card shadow-sm"
     >
-      {isHomePage && !isOpen && arrowTarget ? (
-        <MobileMenuArrow isScrolling={isScrolling} target={arrowTarget} viewport={viewportSize} />
-      ) : null}
-
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -176,16 +132,18 @@ export function Navigation() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            ref={mobileMenuButtonRef}
-            className="relative z-[90] lg:hidden rounded-lg border border-primary bg-primary p-2 text-primary-foreground shadow-sm"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-          >
-            {isOpen ? <X className="h-6 w-6 stroke-[2.5]" /> : <Menu className="h-6 w-6 stroke-[2.5]" />}
-          </button>
+          <div className="relative flex items-center lg:hidden">
+            {isHomePage && !isOpen ? <MobileMenuArrow isScrolling={isScrolling} /> : null}
+            <button
+              className="relative z-[90] rounded-lg border border-primary bg-primary p-2 text-primary-foreground shadow-sm"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+            >
+              {isOpen ? <X className="h-6 w-6 stroke-[2.5]" /> : <Menu className="h-6 w-6 stroke-[2.5]" />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -262,58 +220,38 @@ export function Navigation() {
   )
 }
 
-function MobileMenuArrow({
-  isScrolling,
-  target,
-  viewport,
-}: {
-  isScrolling: boolean
-  target: { x: number; y: number }
-  viewport: { width: number; height: number }
-}) {
-  const viewportWidth = Math.max(viewport.width, 1)
-  const viewportHeight = Math.max(viewport.height, 1)
-  const startX = Math.max(16, target.x - 120)
-  const startY = Math.min(viewportHeight - 24, target.y + 42)
-  const controlOneX = target.x - 92
-  const controlOneY = target.y + 54
-  const controlTwoX = target.x - 38
-  const controlTwoY = target.y + 8
-  const tipX = target.x - 6
-  const tipY = target.y + 2
-
+function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-[85] lg:hidden"
+      className="pointer-events-none absolute right-full top-1/2 z-[85] mr-1.5 -translate-y-1/2"
     >
       <div
         className={cn(
-          "absolute inset-0 transition-all duration-200 ease-out",
+          "transition-all duration-200 ease-out",
           isScrolling
             ? "scale-105 opacity-100 drop-shadow-[0_0_18px_rgba(249,115,22,0.48)]"
             : "opacity-80 drop-shadow-[0_0_8px_rgba(249,115,22,0.24)]"
         )}
       >
         <svg
-          viewBox={`0 0 ${viewportWidth} ${viewportHeight}`}
-          preserveAspectRatio="none"
+          viewBox="0 0 92 58"
           className={cn(
-            "h-full w-full text-primary motion-safe:animate-menu-arrow-idle",
+            "h-[3.6rem] w-[5.6rem] text-primary motion-safe:animate-menu-arrow-idle",
             isScrolling ? "motion-safe:animate-menu-arrow-active" : ""
           )}
           fill="none"
         >
           <path
-            d={`M ${startX} ${startY} C ${controlOneX} ${controlOneY}, ${controlTwoX} ${controlTwoY}, ${tipX} ${tipY}`}
+            d="M8 46C26 49 48 44 66 31C74 25 80 19 84 13"
             stroke="currentColor"
-            strokeWidth="6"
+            strokeWidth="5"
             strokeLinecap="round"
           />
           <path
-            d={`M ${tipX - 15} ${tipY - 7} L ${target.x} ${target.y} L ${tipX - 6} ${tipY + 12}`}
+            d="M72 13L84 13L80 25"
             stroke="currentColor"
-            strokeWidth="6"
+            strokeWidth="5"
             strokeLinecap="round"
             strokeLinejoin="round"
           />
