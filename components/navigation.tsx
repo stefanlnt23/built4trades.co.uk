@@ -21,7 +21,6 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isScrolling, setIsScrolling] = useState(false)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
 
@@ -36,37 +35,6 @@ export function Navigation() {
       document.body.style.overflow = ""
     }
   }, [isOpen])
-
-  useEffect(() => {
-    if (!isHomePage) {
-      setIsScrolling(false)
-      return
-    }
-
-    let scrollTimer: ReturnType<typeof window.setTimeout> | undefined
-
-    const handleScroll = () => {
-      setIsScrolling(true)
-
-      if (scrollTimer) {
-        window.clearTimeout(scrollTimer)
-      }
-
-      scrollTimer = window.setTimeout(() => {
-        setIsScrolling(false)
-      }, 180)
-    }
-
-    window.addEventListener("scroll", handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-
-      if (scrollTimer) {
-        window.clearTimeout(scrollTimer)
-      }
-    }
-  }, [isHomePage])
 
   return (
     <header
@@ -133,10 +101,10 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="relative flex items-center lg:hidden">
-            {isHomePage && !isOpen ? <MobileMenuArrow isScrolling={isScrolling} /> : null}
+            {isHomePage && !isOpen ? <MobileMenuArrow /> : null}
             <button
               className="relative z-[90] rounded-lg border border-primary bg-primary p-2 text-primary-foreground shadow-sm"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen((open) => !open)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-navigation"
@@ -220,26 +188,18 @@ export function Navigation() {
   )
 }
 
-function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
+function MobileMenuArrow() {
   return (
     <div
       aria-hidden="true"
       className="pointer-events-none absolute right-0 top-full z-[85] mt-1"
     >
       <div
-        className={cn(
-          "transition-all duration-200 ease-out",
-          isScrolling
-            ? "scale-105 opacity-100 drop-shadow-[0_0_18px_rgba(249,115,22,0.48)]"
-            : "opacity-80 drop-shadow-[0_0_8px_rgba(249,115,22,0.24)]"
-        )}
+        className="opacity-100 drop-shadow-[0_0_12px_rgba(249,115,22,0.32)]"
       >
         <svg
           viewBox="0 0 44 56"
-          className={cn(
-            "h-[3.2rem] w-[2.6rem] text-primary motion-safe:animate-menu-arrow-idle",
-            isScrolling ? "motion-safe:animate-menu-arrow-active" : ""
-          )}
+          className="h-[3.2rem] w-[2.6rem] text-primary motion-safe:animate-menu-arrow-active"
           fill="none"
         >
           <path
