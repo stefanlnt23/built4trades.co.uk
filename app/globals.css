@@ -158,32 +158,63 @@
 
 @keyframes menu-arrow-idle {
   0%, 100% {
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    color: oklch(0.65 0.18 45);
     filter: brightness(1);
   }
-  50% {
-    transform: translate3d(0, -4px, 0);
+  12%,
+  36%,
+  60%,
+  84% {
+    opacity: 1;
+    color: oklch(0.15 0.02 250);
+    filter: brightness(0.9);
+  }
+  18%,
+  42%,
+  66%,
+  90% {
+    opacity: 1;
+    color: oklch(0.65 0.18 45);
     filter: brightness(1.08);
   }
 }
 
 @keyframes menu-arrow-active {
   0%, 100% {
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    color: oklch(0.65 0.18 45);
     filter: brightness(1);
   }
-  50% {
-    transform: translate3d(2px, -6px, 0);
-    filter: brightness(1.32);
+  10%,
+  24%,
+  38%,
+  52%,
+  66%,
+  80%,
+  94% {
+    opacity: 1;
+    color: oklch(0.15 0.02 250);
+    filter: brightness(0.86);
+  }
+  16%,
+  30%,
+  44%,
+  58%,
+  72%,
+  86% {
+    opacity: 1;
+    color: oklch(0.65 0.18 45);
+    filter: brightness(1.12);
   }
 }
 
 @utility animate-menu-arrow-idle {
-  animation: menu-arrow-idle 2.4s ease-in-out infinite;
+  animation: menu-arrow-idle 1.15s steps(1, end) infinite;
 }
 
 @utility animate-menu-arrow-active {
-  animation: menu-arrow-active 0.65s ease-in-out infinite;
+  animation: menu-arrow-active 0.68s steps(1, end) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

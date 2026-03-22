@@ -61,7 +61,7 @@ const tradeCards = [
     badge: "Fast Response",
     className: "bg-transparent border-0 shadow-none hover:shadow-none hover:border-transparent",
     imageClassName: "object-contain p-3 scale-[1.12] rotate-[-6deg] group-hover:scale-[1.16] group-hover:rotate-[-4deg]",
-    imageContainerClassName: "overflow-visible border border-stone-300/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(56,44,34,0.08)]",
+    imageContainerClassName: "overflow-hidden md:overflow-visible border border-stone-300/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(56,44,34,0.08)]",
     imageBackdropClassName: "bg-[radial-gradient(circle_at_22%_18%,rgba(146,98,57,0.20),transparent_24%),radial-gradient(circle_at_78%_82%,rgba(15,23,42,0.10),transparent_22%),linear-gradient(135deg,rgba(252,248,242,0.96),rgba(245,239,231,0.92))]",
     contentClassName: "border border-stone-800/80 border-t-0 rounded-b-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(245,158,11,0.16),transparent_24%),linear-gradient(180deg,rgba(15,23,42,0.96)_0%,rgba(8,15,33,0.98)_58%,rgba(2,6,23,1)_100%)] shadow-[0_24px_45px_rgba(15,23,42,0.20)]",
     badgeClassName: "border-amber-400/30 bg-amber-400/10 text-amber-200",
@@ -75,7 +75,7 @@ const tradeCards = [
     badge: "24/7 Callouts",
     className: "bg-transparent border-0 shadow-none hover:shadow-none hover:border-transparent lg:translate-y-6",
     imageClassName: "object-contain p-3 scale-[1.12] rotate-[4deg] group-hover:scale-[1.16] group-hover:rotate-[2deg]",
-    imageContainerClassName: "overflow-visible border border-sky-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(14,116,144,0.10)]",
+    imageContainerClassName: "overflow-hidden md:overflow-visible border border-sky-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(14,116,144,0.10)]",
     imageBackdropClassName: "bg-[radial-gradient(circle_at_18%_20%,rgba(125,211,252,0.30),transparent_24%),radial-gradient(circle_at_80%_70%,rgba(59,130,246,0.18),transparent_24%),linear-gradient(135deg,rgba(241,249,255,0.98),rgba(231,244,255,0.92))]",
     contentClassName: "border border-sky-950/70 border-t-0 rounded-b-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(56,189,248,0.18),transparent_24%),linear-gradient(180deg,rgba(10,24,47,0.96)_0%,rgba(4,18,38,0.98)_58%,rgba(2,6,23,1)_100%)] shadow-[0_24px_45px_rgba(14,116,144,0.20)]",
     badgeClassName: "border-sky-400/30 bg-sky-400/10 text-sky-200",
@@ -89,7 +89,7 @@ const tradeCards = [
     badge: "More Bookings",
     className: "bg-transparent border-0 shadow-none hover:shadow-none hover:border-transparent",
     imageClassName: "object-contain p-3 scale-[1.12] rotate-[-3deg] group-hover:scale-[1.16] group-hover:rotate-[-1deg]",
-    imageContainerClassName: "overflow-visible border border-amber-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(217,119,6,0.10)]",
+    imageContainerClassName: "overflow-hidden md:overflow-visible border border-amber-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(217,119,6,0.10)]",
     imageBackdropClassName: "bg-[radial-gradient(circle_at_18%_22%,rgba(253,224,71,0.30),transparent_24%),radial-gradient(circle_at_82%_18%,rgba(251,191,36,0.22),transparent_20%),linear-gradient(135deg,rgba(255,250,235,0.98),rgba(255,243,214,0.92))]",
     contentClassName: "border border-amber-950/70 border-t-0 rounded-b-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(250,204,21,0.18),transparent_24%),linear-gradient(180deg,rgba(28,24,8,0.94)_0%,rgba(18,18,20,0.97)_58%,rgba(10,10,12,1)_100%)] shadow-[0_24px_45px_rgba(217,119,6,0.20)]",
     badgeClassName: "border-amber-400/30 bg-amber-400/10 text-amber-200",
@@ -103,7 +103,7 @@ const tradeCards = [
     badge: "Project Showcase",
     className: "bg-transparent border-0 shadow-none hover:shadow-none hover:border-transparent lg:-translate-y-2",
     imageClassName: "object-contain p-3 scale-[1.12] rotate-[3deg] group-hover:scale-[1.16] group-hover:rotate-[1deg]",
-    imageContainerClassName: "overflow-visible border border-orange-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(234,88,12,0.10)]",
+    imageContainerClassName: "overflow-hidden md:overflow-visible border border-orange-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(234,88,12,0.10)]",
     imageBackdropClassName: "bg-[radial-gradient(circle_at_20%_20%,rgba(251,146,60,0.24),transparent_22%),radial-gradient(circle_at_78%_82%,rgba(100,116,139,0.16),transparent_24%),linear-gradient(135deg,rgba(251,247,241,0.98),rgba(242,238,230,0.92))]",
     contentClassName: "border border-orange-950/70 border-t-0 rounded-b-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_24%),linear-gradient(180deg,rgba(36,20,10,0.95)_0%,rgba(24,16,18,0.98)_58%,rgba(10,10,12,1)_100%)] shadow-[0_24px_45px_rgba(234,88,12,0.20)]",
     badgeClassName: "border-orange-400/30 bg-orange-400/10 text-orange-200",
@@ -117,7 +117,7 @@ const tradeCards = [
     badge: "Premium Finish",
     className: "bg-transparent border-0 shadow-none hover:shadow-none hover:border-transparent lg:translate-y-8",
     imageClassName: "object-contain p-3 scale-[1.12] rotate-[-4deg] group-hover:scale-[1.16] group-hover:rotate-[-2deg]",
-    imageContainerClassName: "overflow-visible border border-slate-300/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(71,85,105,0.12)]",
+    imageContainerClassName: "overflow-hidden md:overflow-visible border border-slate-300/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(71,85,105,0.12)]",
     imageBackdropClassName: "bg-[radial-gradient(circle_at_22%_22%,rgba(148,163,184,0.24),transparent_20%),radial-gradient(circle_at_82%_78%,rgba(249,115,22,0.16),transparent_22%),linear-gradient(135deg,rgba(246,248,250,0.98),rgba(236,241,245,0.92))]",
     contentClassName: "border border-slate-800/80 border-t-0 rounded-b-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(148,163,184,0.18),transparent_24%),linear-gradient(180deg,rgba(17,24,39,0.96)_0%,rgba(8,15,29,0.98)_58%,rgba(2,6,23,1)_100%)] shadow-[0_24px_45px_rgba(71,85,105,0.22)]",
     badgeClassName: "border-slate-400/30 bg-slate-400/10 text-slate-200",
@@ -131,7 +131,7 @@ const tradeCards = [
     badge: "Trust Signals",
     className: "bg-transparent border-0 shadow-none hover:shadow-none hover:border-transparent lg:translate-y-2",
     imageClassName: "object-contain p-3 scale-[1.12] rotate-[2deg] group-hover:scale-[1.16] group-hover:rotate-0",
-    imageContainerClassName: "overflow-visible border border-teal-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(13,148,136,0.10)]",
+    imageContainerClassName: "overflow-hidden md:overflow-visible border border-teal-200/80 rounded-t-[1.75rem] bg-transparent shadow-[0_24px_60px_rgba(13,148,136,0.10)]",
     imageBackdropClassName: "bg-[radial-gradient(circle_at_18%_22%,rgba(94,234,212,0.18),transparent_22%),radial-gradient(circle_at_82%_22%,rgba(59,130,246,0.12),transparent_20%),linear-gradient(135deg,rgba(244,252,251,0.98),rgba(234,246,244,0.92))]",
     contentClassName: "border border-teal-950/70 border-t-0 rounded-b-[1.75rem] bg-[radial-gradient(circle_at_top,rgba(45,212,191,0.18),transparent_24%),linear-gradient(180deg,rgba(7,30,31,0.96)_0%,rgba(5,20,27,0.98)_58%,rgba(2,6,23,1)_100%)] shadow-[0_24px_45px_rgba(13,148,136,0.20)]",
     badgeClassName: "border-teal-400/30 bg-teal-400/10 text-teal-200",
@@ -318,7 +318,7 @@ const cities = [
 
 export default function HomePage() {
   return (
-    <>
+    <div className="overflow-x-clip">
       <section className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,247,238,0.98),rgba(247,242,235,0.94))] pt-20 pb-10 sm:pt-24 sm:pb-12 lg:pt-36 lg:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_24%)]" />
         <div className="container relative mx-auto grid gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:items-center lg:gap-10 lg:px-8">
@@ -845,7 +845,7 @@ export default function HomePage() {
 
             <div className="relative lg:-mt-8">
               <div className="absolute inset-4 rounded-[2rem] bg-primary/20 blur-2xl" />
-              <div className="absolute -left-6 -top-6 h-24 w-24 rounded-[1.75rem] border border-primary/20 bg-white/60" />
+              <div className="absolute left-0 top-0 h-20 w-20 rounded-[1.5rem] border border-primary/20 bg-white/60 sm:-left-6 sm:-top-6 sm:h-24 sm:w-24 sm:rounded-[1.75rem]" />
               <div className="relative overflow-hidden rounded-[1.5rem] border border-primary/25 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),linear-gradient(180deg,rgba(255,245,236,0.98),rgba(255,237,222,0.96))] p-4 shadow-[0_28px_70px_rgba(234,88,12,0.16)] sm:rounded-[2rem] sm:p-6 lg:p-8">
                 <div className="mb-4 flex items-start justify-between gap-4 sm:mb-6">
                   <div>
@@ -936,6 +936,6 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-    </>
+    </div>
   )
 }

@@ -224,7 +224,7 @@ function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute right-full top-1/2 z-[85] mr-1.5 -translate-y-1/2"
+      className="pointer-events-none absolute right-0 top-full z-[85] mt-1"
     >
       <div
         className={cn(
@@ -235,21 +235,21 @@ function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
         )}
       >
         <svg
-          viewBox="0 0 92 58"
+          viewBox="0 0 44 56"
           className={cn(
-            "h-[3.6rem] w-[5.6rem] text-primary motion-safe:animate-menu-arrow-idle",
+            "h-[3.2rem] w-[2.6rem] text-primary motion-safe:animate-menu-arrow-idle",
             isScrolling ? "motion-safe:animate-menu-arrow-active" : ""
           )}
           fill="none"
         >
           <path
-            d="M8 46C26 49 48 44 66 31C74 25 80 19 84 13"
+            d="M22 7C22 18 22 28 22 38"
             stroke="currentColor"
             strokeWidth="5"
             strokeLinecap="round"
           />
           <path
-            d="M72 13L84 13L80 25"
+            d="M12 18L22 7L32 18"
             stroke="currentColor"
             strokeWidth="5"
             strokeLinecap="round"
