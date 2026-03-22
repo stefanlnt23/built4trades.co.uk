@@ -41,15 +41,15 @@ export function TradeCard({
   return (
     <div
       className={cn(
-        "group rounded-[1.75rem] transition-all duration-300 hover:-translate-y-1",
+        "group rounded-[1.5rem] transition-all duration-300 hover:-translate-y-1 sm:rounded-[1.75rem]",
         className
       )}
     >
       <div
         className={cn("relative isolate w-full overflow-hidden", {
-          "aspect-video": aspectRatio === "16/9",
-          "aspect-[4/3]": aspectRatio === "4/3",
-          "aspect-square": aspectRatio === "1/1",
+          "h-[220px] sm:h-auto sm:aspect-video": aspectRatio === "16/9",
+          "h-[220px] sm:h-auto sm:aspect-[4/3]": aspectRatio === "4/3",
+          "h-[220px] sm:h-auto sm:aspect-square": aspectRatio === "1/1",
         }, imageContainerClassName)}
       >
         <div
@@ -72,12 +72,12 @@ export function TradeCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <div className={cn("relative -mt-5 p-5 pt-8 lg:p-6 lg:pt-9 text-center", contentClassName)}>
+      <div className={cn("relative -mt-4 p-4 pt-6 text-center sm:-mt-5 sm:p-5 sm:pt-8 lg:p-6 lg:pt-9", contentClassName)}>
         <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-white/10" />
         {badge && (
           <span
             className={cn(
-              "mb-3 inline-flex items-center justify-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em]",
+              "mb-2 inline-flex items-center justify-center rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] sm:mb-3 sm:text-[11px]",
               badgeClassName
             )}
           >
@@ -86,7 +86,7 @@ export function TradeCard({
         )}
         <h3
           className={cn(
-            "font-display font-semibold text-lg lg:text-xl text-card-foreground mb-2",
+            "mb-2 font-display text-base font-semibold text-card-foreground sm:text-lg lg:text-xl",
             titleClassName
           )}
         >
@@ -94,7 +94,7 @@ export function TradeCard({
         </h3>
         <p
           className={cn(
-            "text-sm lg:text-base leading-relaxed mb-4 text-card-foreground/78",
+            "mb-3 text-sm leading-relaxed text-card-foreground/78 sm:mb-4 lg:text-base",
             descriptionClassName
           )}
         >

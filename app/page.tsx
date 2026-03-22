@@ -321,39 +321,39 @@ const cities = [
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,247,238,0.98),rgba(247,242,235,0.94))] pt-28 pb-14 lg:pt-36 lg:pb-20">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,247,238,0.98),rgba(247,242,235,0.94))] pt-20 pb-10 sm:pt-24 sm:pb-12 lg:pt-36 lg:pb-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_24%)]" />
-        <div className="container relative mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:items-center lg:px-8">
+        <div className="container relative mx-auto grid gap-8 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:items-center lg:gap-10 lg:px-8">
           <div className="max-w-3xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-2 text-sm font-medium text-foreground shadow-sm">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-3.5 py-1.5 text-xs font-medium text-foreground shadow-sm sm:mb-5 sm:px-4 sm:py-2 sm:text-sm">
               <Clock3 className="h-4 w-4 text-primary" />
               Free demo first. Most sites live in 5 to 7 days.
             </div>
-            <h1 className="font-display text-4xl font-bold text-foreground text-balance sm:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="font-display text-[2.5rem] font-bold text-foreground text-balance leading-[0.98] sm:text-5xl lg:text-6xl xl:text-7xl">
               Your Trade Deserves a Website That Works as Hard as You Do
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:mt-6 sm:text-xl">
               We build fast, professional websites for UK tradespeople. No jargon. No contracts. Just a proper site that helps you look trusted and win more work.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-5 flex flex-wrap gap-2.5 sm:mt-6 sm:gap-3">
               {proofPoints.map((item) => (
                 <span
                   key={item}
-                  className="inline-flex items-center rounded-full border border-stone-200 bg-white/75 px-4 py-2 text-sm font-medium text-foreground shadow-sm"
+                  className="inline-flex items-center rounded-full border border-stone-200 bg-white/75 px-3 py-1.5 text-xs font-medium text-foreground shadow-sm sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {item}
                 </span>
               ))}
             </div>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Button asChild size="lg" className="text-lg px-8 py-6">
+            <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:gap-4 sm:flex-row">
+              <Button asChild size="lg" className="px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg">
                 <Link href="/contact">Get a Free Demo</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 bg-white/70"
+                className="bg-white/70 px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg"
               >
                 <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
                   WhatsApp Us
@@ -367,17 +367,17 @@ export default function HomePage() {
 
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.12),transparent_32%)] blur-2xl" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-stone-200/80 bg-white/90 p-4 shadow-[0_30px_80px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:p-5">
-              <div className="mb-4 flex items-center justify-between gap-4 rounded-2xl border border-stone-200 bg-stone-50/80 px-4 py-3">
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-stone-200/80 bg-white/90 p-3 shadow-[0_30px_80px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:rounded-[2rem] sm:p-5">
+              <div className="mb-3 flex items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-stone-50/80 px-3 py-2.5 sm:mb-4 sm:gap-4 sm:px-4 sm:py-3">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">Live Client Site</p>
-                  <p className="mt-1 font-display text-xl font-bold text-foreground">ADL Mechanic</p>
+                  <p className="mt-1 font-display text-lg font-bold text-foreground sm:text-xl">ADL Mechanic</p>
                 </div>
-                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-700 sm:px-3 sm:text-xs">
                   Real Project
                 </span>
               </div>
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-stone-200 bg-stone-100">
+              <div className="relative h-[220px] overflow-hidden rounded-[1.25rem] border border-stone-200 bg-stone-100 sm:h-auto sm:aspect-[4/3] sm:rounded-[1.5rem]">
                 <Image
                   src="/adl-mechanic-1.webp"
                   alt="ADL Mechanic website preview"
@@ -387,18 +387,18 @@ export default function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 45vw"
                 />
               </div>
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+              <div className="mt-3 grid grid-cols-2 gap-2.5 sm:mt-4 sm:gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-3 sm:p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Built For</p>
-                  <p className="mt-2 font-medium text-foreground">Urgent callout leads</p>
+                  <p className="mt-1.5 text-sm font-medium text-foreground sm:mt-2 sm:text-base">Urgent callout leads</p>
                 </div>
-                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-3 sm:p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Contact Path</p>
-                  <p className="mt-2 font-medium text-foreground">Phone and fast enquiries</p>
+                  <p className="mt-1.5 text-sm font-medium text-foreground sm:mt-2 sm:text-base">Phone and fast enquiries</p>
                 </div>
-                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+                <div className="col-span-2 rounded-2xl border border-stone-200 bg-stone-50/80 p-3 sm:col-span-1 sm:p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Turnaround</p>
-                  <p className="mt-2 font-medium text-foreground">Fast, clear, trade-first</p>
+                  <p className="mt-1.5 text-sm font-medium text-foreground sm:mt-2 sm:text-base">Fast, clear, trade-first</p>
                 </div>
               </div>
             </div>
@@ -422,18 +422,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <SectionWrapper>
+      <SectionWrapper className="py-12 lg:py-24">
         <SectionHeader
           title="Real Websites, Not Just Mockups"
+          className="mb-8 lg:mb-14"
           subtitle="These are live projects already built for real businesses. That matters more than polished concepts."
         />
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+        <div className="grid gap-4 sm:gap-6 lg:grid-cols-2 lg:gap-8">
           {featuredProjects.map((project) => (
             <div
               key={project.businessName}
-              className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
+              className="overflow-hidden rounded-[1.5rem] border border-border bg-card shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:rounded-[2rem]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
+              <div className="relative h-[210px] overflow-hidden border-b border-border sm:h-auto sm:aspect-[16/10]">
                 <Image
                   src={project.image}
                   alt={`${project.businessName} website preview`}
@@ -442,11 +443,11 @@ export default function HomePage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
-              <div className="p-6 lg:p-7">
+              <div className="p-4 sm:p-6 lg:p-7">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{project.trade}</p>
-                <h3 className="mt-2 font-display text-2xl font-bold text-foreground">{project.businessName}</h3>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{project.description}</p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <h3 className="mt-2 font-display text-xl font-bold text-foreground sm:text-2xl">{project.businessName}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3 sm:text-base">{project.description}</p>
+                <div className="mt-4 flex flex-col gap-2.5 sm:mt-6 sm:gap-3 sm:flex-row">
                   <Button asChild>
                     <a href={project.url} target="_blank" rel="noreferrer">
                       View Live Site <ExternalLink className="ml-2 h-4 w-4" />
@@ -462,67 +463,68 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="secondary">
-        <div className="text-center mb-12">
-          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-balance mb-4">
+      <SectionWrapper background="secondary" className="py-12 lg:py-24">
+        <div className="mb-8 text-center sm:mb-10 lg:mb-12">
+          <h2 className="mb-3 font-display text-3xl font-bold text-balance lg:text-4xl xl:text-5xl">
             Every Day Without a Proper Website Makes Winning Work Harder
           </h2>
-          <p className="mx-auto max-w-3xl text-lg text-secondary-foreground/80">
+          <p className="mx-auto max-w-3xl text-base text-secondary-foreground/80 sm:text-lg">
             Tradespeople do not need buzzwords. They need to be found quickly, look trustworthy fast, and give customers an easy way to get in touch before the next trade gets the job.
           </p>
         </div>
-        <div className="mb-8 grid gap-3 lg:grid-cols-3">
+        <div className="-mx-4 mb-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 lg:mx-0 lg:mb-8 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0">
           {urgencySignals.map((signal) => (
             <div
               key={signal}
-              className="rounded-[1.5rem] border border-white/10 bg-white/6 px-5 py-4 text-left text-sm leading-relaxed text-secondary-foreground/82"
+              className="min-w-[85%] snap-start rounded-[1.35rem] border border-white/10 bg-white/6 px-4 py-3.5 text-left text-sm leading-relaxed text-secondary-foreground/82 lg:min-w-0 lg:rounded-[1.5rem] lg:px-5 lg:py-4"
             >
               {signal}
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
           {outcomes.map((item) => {
             const Icon = item.icon
 
             return (
               <div
                 key={item.title}
-                className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
+                className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4 sm:rounded-[1.5rem] sm:p-5 lg:rounded-[1.75rem] lg:p-6"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
-                  <Icon className="h-5 w-5 text-primary" />
+                <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 sm:h-12 sm:w-12">
+                  <Icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-bold text-white">{item.title}</h3>
-                <p className="mt-3 leading-relaxed text-secondary-foreground/75">{item.description}</p>
+                <h3 className="mt-3 font-display text-lg font-bold leading-tight text-white sm:mt-4 sm:text-xl lg:mt-5 lg:text-2xl">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-secondary-foreground/75 sm:mt-3 sm:text-base">{item.description}</p>
               </div>
             )
           })}
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-7 text-center sm:mt-8 lg:mt-10">
           <Button asChild size="lg">
             <Link href="/contact">Get a Free Demo</Link>
           </Button>
         </div>
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="py-12 lg:py-24">
         <SectionHeader
           title="Do Not See Your Trade Above?"
+          className="mb-8 lg:mb-14"
           subtitle="The live projects above are real client sites. These designs below show the kind of tailored look we can build for other trades too."
         />
-        <p className="mx-auto mb-10 max-w-3xl text-center text-sm font-medium uppercase tracking-[0.18em] text-stone-500">
+        <p className="mx-auto mb-6 max-w-3xl text-center text-xs font-medium uppercase tracking-[0.18em] text-stone-500 sm:mb-10 sm:text-sm">
           Custom directions for any trade, not off-the-shelf templates
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-8 lg:gap-y-10">
-          {tradeCards.map((card) => (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-10">
+          {tradeCards.map((card, index) => (
             <TradeCard
               key={card.title}
+              className={`${card.className ?? ""} ${index > 2 ? "hidden md:block" : ""}`}
               image={card.image}
               title={card.title}
               description={card.description}
               badge={card.badge}
-              className={card.className}
               imageClassName={card.imageClassName}
               imageContainerClassName={card.imageContainerClassName}
               imageBackdropClassName={card.imageBackdropClassName}
@@ -533,15 +535,19 @@ export default function HomePage() {
             />
           ))}
         </div>
+        <p className="mt-5 text-center text-sm text-muted-foreground md:hidden">
+          Showing a shorter mobile set here. More trade examples are available on larger screens and in your demo.
+        </p>
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="py-12 lg:py-24">
         <SectionHeader
           title="Everything Your Business Needs Online"
+          className="mb-8 lg:mb-14"
           subtitle="No technical jargon. No hidden costs. Just everything you need to get found and get hired."
         />
-        <div className="space-y-8">
-          <div className="relative px-2 py-4 sm:px-4">
+        <div className="space-y-6 lg:space-y-8">
+          <div className="relative px-0 py-2 sm:px-4 sm:py-4">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.82),transparent_34%),radial-gradient(circle_at_bottom,rgba(247,242,235,0.78),transparent_24%)]" />
             <div className="relative mx-auto max-w-[1280px]">
               <div className="pointer-events-none absolute inset-x-[8%] top-10 bottom-12 hidden lg:block">
@@ -621,7 +627,7 @@ export default function HomePage() {
                     quality={80}
                   />
                 </div>
-                <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:hidden [mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)]">
+                <div className="relative aspect-[5/6] sm:aspect-[3/4] lg:hidden [mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_58%,transparent_92%)]">
                   <Image
                     src="/image-mobile-v2.png"
                     alt="Trades website mobile visual showing local visibility and customer contact options"
@@ -679,16 +685,16 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:hidden">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2 lg:hidden">
             {features.map((feature) => {
               const Icon = feature.icon
 
               return (
                 <div
                   key={feature.title}
-                  className="flex items-start gap-3"
+                  className="flex items-start gap-3 rounded-[1.25rem] border border-stone-200/70 bg-white/70 p-3.5"
                 >
-                  <div className={`mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm ${feature.iconColor}`}>
+                  <div className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-white shadow-sm ${feature.iconColor}`}>
                     <Icon className="h-4 w-4" />
                   </div>
                   <div>
@@ -709,36 +715,37 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="muted">
+      <SectionWrapper background="muted" className="py-12 lg:py-24">
         <SectionHeader
           title="How It Works"
+          className="mb-8 lg:mb-14"
           subtitle="From zero to live website in days — with a simple process and no tech headaches."
         />
         <div className="relative mx-auto max-w-6xl">
           <div className="pointer-events-none absolute left-[16.66%] right-[16.66%] top-11 hidden h-px bg-gradient-to-r from-orange-200 via-stone-300 to-emerald-200 lg:block" />
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:gap-8">
             {howItWorks.map((step, index) => (
               <div
                 key={step.step}
                 className={`relative h-full transform-gpu transition-transform duration-300 ${step.tiltClassName}`}
               >
-                <div className={`absolute inset-x-5 top-5 h-32 rounded-[2rem] bg-gradient-to-br ${step.accentClassName} blur-2xl opacity-80`} />
-                <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-stone-200/80 bg-white/90 p-6 shadow-[0_22px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm lg:p-7">
-                  <div className="mb-6 flex items-center justify-between gap-4">
-                    <span className={`inline-flex items-center rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${step.badgeClassName}`}>
+                <div className={`absolute inset-x-5 top-5 h-24 rounded-[2rem] bg-gradient-to-br ${step.accentClassName} blur-2xl opacity-80 sm:h-32`} />
+                <div className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-stone-200/80 bg-white/90 p-4 shadow-[0_22px_60px_rgba(15,23,42,0.08)] backdrop-blur-sm sm:rounded-[2rem] sm:p-5 lg:p-7">
+                  <div className="mb-4 flex items-center justify-between gap-4 sm:mb-6">
+                    <span className={`inline-flex items-center rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] sm:text-[11px] ${step.badgeClassName}`}>
                       Step {step.step}
                     </span>
-                    <span className="font-display text-5xl font-bold leading-none text-stone-200">
+                    <span className="font-display text-4xl font-bold leading-none text-stone-200 sm:text-5xl">
                       {step.step}
                     </span>
                   </div>
-                  <h3 className="max-w-[16rem] font-display text-2xl font-bold leading-tight text-slate-900">
+                  <h3 className="max-w-[16rem] font-display text-xl font-bold leading-tight text-slate-900 sm:text-2xl">
                     {step.title}
                   </h3>
-                  <p className="mt-4 text-base leading-relaxed text-slate-700">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-700 sm:mt-4 sm:text-base">
                     {step.description}
                   </p>
-                  <div className="mt-6 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-stone-400">
+                  <div className="mt-5 flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-stone-400 sm:mt-6">
                     <span className="h-px flex-1 bg-stone-200" />
                     {index === howItWorks.length - 1 ? "Go Live" : "Next Step"}
                   </div>
@@ -749,15 +756,16 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="py-12 lg:py-24">
         <SectionHeader
           title="Why Trades Choose Built4Trades"
+          className="mb-8 lg:mb-14"
           subtitle="If you do not have loads of reviews yet, trust has to come from a clear offer, real work, and a real person behind it."
         />
-        <div className="grid gap-10 lg:grid-cols-[minmax(320px,0.85fr)_minmax(0,1.15fr)] lg:items-center">
+        <div className="grid gap-8 lg:grid-cols-[minmax(320px,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-10">
           <div className="relative">
             <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_34%)] blur-2xl" />
-            <div className="relative aspect-[4/4.7] overflow-hidden rounded-[2rem] border border-white/55 bg-[linear-gradient(180deg,rgba(255,248,240,0.96),rgba(241,235,226,0.96))] shadow-[0_28px_70px_rgba(15,23,42,0.10)]">
+            <div className="relative h-[360px] overflow-hidden rounded-[1.75rem] border border-white/55 bg-[linear-gradient(180deg,rgba(255,248,240,0.96),rgba(241,235,226,0.96))] shadow-[0_28px_70px_rgba(15,23,42,0.10)] sm:h-auto sm:aspect-[4/4.7] sm:rounded-[2rem]">
               <Image
                 src="/me.png"
                 alt="Stef - Built4Trades.co.uk founder"
@@ -768,28 +776,28 @@ export default function HomePage() {
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_20%,transparent_100%)]" />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-[linear-gradient(180deg,transparent,rgba(241,235,226,0.88))]" />
             </div>
-            <div className="absolute -bottom-6 left-5 rounded-xl bg-primary p-5 text-primary-foreground shadow-lg">
-              <p className="font-display text-2xl font-bold">{siteConfig.founderName}</p>
+            <div className="absolute -bottom-4 left-4 rounded-xl bg-primary p-4 text-primary-foreground shadow-lg sm:-bottom-6 sm:left-5 sm:p-5">
+              <p className="font-display text-xl font-bold sm:text-2xl">{siteConfig.founderName}</p>
               <p className="text-primary-foreground/80">Based in {siteConfig.baseLocation}</p>
             </div>
           </div>
 
           <div>
-            <p className="text-lg leading-relaxed text-muted-foreground">
+            <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
               You are not dealing with a faceless agency. Built4Trades is run by a real person, focused on one niche, with live trade websites already in the portfolio.
             </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-6 grid gap-3 sm:mt-8 sm:gap-4 sm:grid-cols-2">
               {reasons.map((reason) => (
                 <div
                   key={reason}
-                  className="rounded-[1.5rem] border border-border bg-card p-5 shadow-sm"
+                  className="rounded-[1.25rem] border border-border bg-card p-4 shadow-sm sm:rounded-[1.5rem] sm:p-5"
                 >
                   <CheckCircle2 className="h-5 w-5 text-primary" />
-                  <p className="mt-3 font-medium text-foreground">{reason}</p>
+                  <p className="mt-2.5 text-sm font-medium text-foreground sm:mt-3 sm:text-base">{reason}</p>
                 </div>
               ))}
             </div>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row">
               <Button asChild>
                 <Link href="/about">Meet Stef</Link>
               </Button>
@@ -801,38 +809,38 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="py-12 lg:py-24">
         <SectionHeader title="What a Proper Website Does for Your Business" />
         <div className="relative mx-auto max-w-6xl">
           <div className="pointer-events-none absolute left-12 top-10 hidden h-40 w-40 rounded-full bg-stone-200/60 blur-3xl lg:block" />
           <div className="pointer-events-none absolute bottom-8 right-10 hidden h-48 w-48 rounded-full bg-primary/15 blur-3xl lg:block" />
 
-          <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.95fr)_auto_minmax(0,1.05fr)] lg:items-center">
+          <div className="relative grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.95fr)_auto_minmax(0,1.05fr)] lg:items-center lg:gap-8">
             <div className="relative lg:mt-10">
               <div className="absolute inset-4 rounded-[2rem] bg-stone-300/45 blur-2xl" />
               <div className="absolute -bottom-5 left-5 right-10 h-full rounded-[2rem] border border-stone-300/70 bg-stone-100/70" />
-              <div className="relative overflow-hidden rounded-[2rem] border border-stone-300/80 bg-[linear-gradient(180deg,rgba(247,243,236,0.98),rgba(238,232,223,0.96))] p-6 shadow-[0_28px_70px_rgba(56,44,34,0.10)] lg:p-8">
-                <div className="mb-6 flex items-start justify-between gap-4">
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-stone-300/80 bg-[linear-gradient(180deg,rgba(247,243,236,0.98),rgba(238,232,223,0.96))] p-4 shadow-[0_28px_70px_rgba(56,44,34,0.10)] sm:rounded-[2rem] sm:p-6 lg:p-8">
+                <div className="mb-4 flex items-start justify-between gap-4 sm:mb-6">
                   <div>
-                    <span className="mb-4 inline-flex rounded-full border border-stone-300 bg-white/70 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-stone-500">
+                    <span className="mb-3 inline-flex rounded-full border border-stone-300 bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-stone-500 sm:mb-4 sm:text-[11px]">
                       Old Way
                     </span>
-                    <h3 className="font-display text-xl font-bold text-foreground/70 lg:text-2xl">
+                    <h3 className="font-display text-lg font-bold text-foreground/70 sm:text-xl lg:text-2xl">
                       Without a Website
                     </h3>
                   </div>
-                  <span className="inline-flex rounded-full border border-destructive/20 bg-destructive/8 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-destructive">
+                  <span className="inline-flex rounded-full border border-destructive/20 bg-destructive/8 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-destructive sm:text-[11px]">
                     Missed Jobs
                   </span>
                 </div>
-                <ul className="space-y-4">
+                <ul className="space-y-3 sm:space-y-4">
                   {negatives.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 rounded-2xl border border-stone-300/60 bg-white/50 px-4 py-3"
+                      className="flex items-start gap-3 rounded-2xl border border-stone-300/60 bg-white/50 px-3.5 py-3 sm:px-4"
                     >
                       <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
-                      <span className="text-foreground/75">{item}</span>
+                      <span className="text-sm text-foreground/75 sm:text-base">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -850,28 +858,28 @@ export default function HomePage() {
             <div className="relative lg:-mt-8">
               <div className="absolute inset-4 rounded-[2rem] bg-primary/20 blur-2xl" />
               <div className="absolute -left-6 -top-6 h-24 w-24 rounded-[1.75rem] border border-primary/20 bg-white/60" />
-              <div className="relative overflow-hidden rounded-[2rem] border border-primary/25 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),linear-gradient(180deg,rgba(255,245,236,0.98),rgba(255,237,222,0.96))] p-6 shadow-[0_28px_70px_rgba(234,88,12,0.16)] lg:p-8">
-                <div className="mb-6 flex items-start justify-between gap-4">
+              <div className="relative overflow-hidden rounded-[1.5rem] border border-primary/25 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),linear-gradient(180deg,rgba(255,245,236,0.98),rgba(255,237,222,0.96))] p-4 shadow-[0_28px_70px_rgba(234,88,12,0.16)] sm:rounded-[2rem] sm:p-6 lg:p-8">
+                <div className="mb-4 flex items-start justify-between gap-4 sm:mb-6">
                   <div>
-                    <span className="mb-4 inline-flex rounded-full border border-primary/20 bg-white/75 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+                    <span className="mb-3 inline-flex rounded-full border border-primary/20 bg-white/75 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary sm:mb-4 sm:text-[11px]">
                       Better Way
                     </span>
-                    <h3 className="font-display text-xl font-bold text-primary lg:text-2xl">
+                    <h3 className="font-display text-lg font-bold text-primary sm:text-xl lg:text-2xl">
                       With a Built4Trades Website
                     </h3>
                   </div>
-                  <span className="inline-flex rounded-full border border-primary/20 bg-primary/12 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                  <span className="inline-flex rounded-full border border-primary/20 bg-primary/12 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary sm:text-[11px]">
                     More Enquiries
                   </span>
                 </div>
-                <ul className="space-y-4">
+                <ul className="space-y-3 sm:space-y-4">
                   {positives.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-white/65 px-4 py-3"
+                      className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-white/65 px-3.5 py-3 sm:px-4"
                     >
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                      <span className="text-foreground">{item}</span>
+                      <span className="text-sm text-foreground sm:text-base">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -881,34 +889,36 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="muted">
+      <SectionWrapper background="muted" className="py-12 lg:py-24">
         <SectionHeader
           title="Homepage FAQs"
+          className="mb-8 lg:mb-14"
           subtitle="A few straight answers to the objections people usually have before getting started."
         />
-        <div className="mx-auto grid max-w-5xl gap-4 lg:grid-cols-3">
+        <div className="mx-auto grid max-w-5xl gap-3 sm:gap-4 lg:grid-cols-3">
           {faqs.map((item) => (
             <div
               key={item.question}
-              className="rounded-[1.75rem] border border-border bg-card p-6 shadow-sm"
+              className="rounded-[1.5rem] border border-border bg-card p-4 shadow-sm sm:p-6"
             >
-              <h3 className="font-display text-xl font-bold text-foreground">{item.question}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{item.answer}</p>
+              <h3 className="font-display text-lg font-bold text-foreground sm:text-xl">{item.question}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3 sm:text-base">{item.answer}</p>
             </div>
           ))}
         </div>
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="py-12 lg:py-24">
         <SectionHeader
           title="Based in Coventry. Building for the Whole of the UK."
+          className="mb-8 lg:mb-14"
           subtitle="Whether you're a plumber in Manchester, an electrician in Bristol, or a mechanic in Glasgow — everything is handled remotely. You never need to leave your van."
         />
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
           {cities.map((city) => (
             <span
               key={city}
-              className="inline-flex items-center gap-1.5 rounded-full bg-muted px-4 py-2 text-sm font-medium text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-foreground sm:px-4 sm:py-2 sm:text-sm"
             >
               <MapPin className="h-3.5 w-3.5 text-primary" />
               {city}
@@ -917,19 +927,19 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      <SectionWrapper background="secondary">
+      <SectionWrapper background="secondary" className="py-12 lg:py-24">
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
+          <h2 className="mb-4 font-display text-3xl font-bold lg:mb-6 lg:text-4xl xl:text-5xl">
             See Your Business as a Real Website Before You Pay a Penny
           </h2>
-          <p className="text-secondary-foreground/80 text-lg lg:text-xl mb-8">
+          <p className="mb-6 text-base text-secondary-foreground/80 lg:mb-8 lg:text-xl">
             We will build a free demo site around your trade, your area, and your service style. No payment. No obligation. Just a proper look at what your business could look like online.
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="text-lg px-8 py-6">
+          <div className="flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
+            <Button asChild size="lg" className="px-6 py-5 text-base sm:px-8 sm:py-6 sm:text-lg">
               <Link href="/contact">Request Your Free Demo</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white hover:text-foreground text-lg px-8 py-6">
+            <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 px-6 py-5 text-base text-white hover:bg-white hover:text-foreground sm:px-8 sm:py-6 sm:text-lg">
               <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
                 WhatsApp Us
               </a>
