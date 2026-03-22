@@ -22,7 +22,6 @@ const navLinks = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
-  const isHomePage = pathname === "/"
 
   useEffect(() => {
     setIsOpen(false)
@@ -101,7 +100,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <div className="relative flex items-center lg:hidden">
-            {isHomePage && !isOpen ? <MobileMenuArrow /> : null}
+            {!isOpen ? <MobileMenuArrow /> : null}
             <button
               className="relative z-[90] rounded-lg border border-primary bg-primary p-2 text-primary-foreground shadow-sm"
               onClick={() => setIsOpen((open) => !open)}

@@ -160,23 +160,14 @@
   0%, 100% {
     opacity: 1;
     color: oklch(0.65 0.18 45);
+    transform: translateY(0);
     filter: brightness(1);
   }
-  12%,
-  36%,
-  60%,
-  84% {
-    opacity: 1;
-    color: oklch(0.15 0.02 250);
-    filter: brightness(0.9);
-  }
-  18%,
-  42%,
-  66%,
-  90% {
+  50% {
     opacity: 1;
     color: oklch(0.65 0.18 45);
-    filter: brightness(1.08);
+    transform: translateY(8px);
+    filter: brightness(1.06);
   }
 }
 
@@ -184,37 +175,23 @@
   0%, 100% {
     opacity: 1;
     color: oklch(0.65 0.18 45);
+    transform: translateY(0);
     filter: brightness(1);
   }
-  10%,
-  24%,
-  38%,
-  52%,
-  66%,
-  80%,
-  94% {
-    opacity: 1;
-    color: oklch(0.15 0.02 250);
-    filter: brightness(0.86);
-  }
-  16%,
-  30%,
-  44%,
-  58%,
-  72%,
-  86% {
+  50% {
     opacity: 1;
     color: oklch(0.65 0.18 45);
-    filter: brightness(1.12);
+    transform: translateY(10px);
+    filter: brightness(1.1);
   }
 }
 
 @utility animate-menu-arrow-idle {
-  animation: menu-arrow-idle 1.15s steps(1, end) infinite;
+  animation: menu-arrow-idle 1.4s ease-in-out infinite;
 }
 
 @utility animate-menu-arrow-active {
-  animation: menu-arrow-active 0.68s steps(1, end) infinite;
+  animation: menu-arrow-active 1s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
