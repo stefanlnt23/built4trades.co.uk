@@ -21,7 +21,9 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolling, setIsScrolling] = useState(false)
   const pathname = usePathname()
+  const isHomePage = pathname === "/"
 
   useEffect(() => {
     setIsOpen(false)
@@ -35,10 +37,43 @@ export function Navigation() {
     }
   }, [isOpen])
 
+  useEffect(() => {
+    if (!isHomePage) {
+      setIsScrolling(false)
+      return
+    }
+
+    let scrollTimer: ReturnType<typeof window.setTimeout> | undefined
+
+    const handleScroll = () => {
+      setIsScrolling(true)
+
+      if (scrollTimer) {
+        window.clearTimeout(scrollTimer)
+      }
+
+      scrollTimer = window.setTimeout(() => {
+        setIsScrolling(false)
+      }, 180)
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+
+      if (scrollTimer) {
+        window.clearTimeout(scrollTimer)
+      }
+    }
+  }, [isHomePage])
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card shadow-sm"
     >
+      {isHomePage && !isOpen ? <MobileMenuArrow isScrolling={isScrolling} /> : null}
+
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -181,5 +216,46 @@ export function Navigation() {
         </div>
       )}
     </header>
+  )
+}
+
+function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none fixed right-14 top-[4.2rem] z-[85] lg:hidden"
+    >
+      <div
+        className={cn(
+          "transition-all duration-200 ease-out",
+          isScrolling
+            ? "scale-105 opacity-100 drop-shadow-[0_0_18px_rgba(249,115,22,0.48)]"
+            : "opacity-80 drop-shadow-[0_0_8px_rgba(249,115,22,0.24)]"
+        )}
+      >
+        <svg
+          viewBox="0 0 120 120"
+          className={cn(
+            "h-20 w-20 -scale-x-100 text-primary motion-safe:animate-menu-arrow-idle",
+            isScrolling ? "motion-safe:animate-menu-arrow-active" : ""
+          )}
+          fill="none"
+        >
+          <path
+            d="M22 100C24 74 43 50 74 38C85 34 94 32 103 32"
+            stroke="currentColor"
+            strokeWidth="6"
+            strokeLinecap="round"
+          />
+          <path
+            d="M89 20L104 32L90 46"
+            stroke="currentColor"
+            strokeWidth="6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
   )
 }
