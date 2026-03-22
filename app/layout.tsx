@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
+import { FloatingWhatsApp } from '@/components/floating-whatsapp'
 import './globals.css'
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -67,6 +68,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingWhatsApp />
         <Analytics />
       </body>
     </html>
