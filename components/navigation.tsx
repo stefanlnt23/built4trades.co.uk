@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -22,6 +22,8 @@ const navLinks = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolling, setIsScrolling] = useState(false)
+  const [arrowPosition, setArrowPosition] = useState<{ top: number; left: number } | null>(null)
+  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
 
@@ -68,11 +70,43 @@ export function Navigation() {
     }
   }, [isHomePage])
 
+  useEffect(() => {
+    if (!isHomePage || isOpen) {
+      setArrowPosition(null)
+      return
+    }
+
+    const updateArrowPosition = () => {
+      const button = mobileMenuButtonRef.current
+
+      if (!button || window.innerWidth >= 1024) {
+        setArrowPosition(null)
+        return
+      }
+
+      const rect = button.getBoundingClientRect()
+
+      setArrowPosition({
+        top: rect.top + rect.height - 2,
+        left: rect.left - 76,
+      })
+    }
+
+    updateArrowPosition()
+    window.addEventListener("resize", updateArrowPosition)
+
+    return () => {
+      window.removeEventListener("resize", updateArrowPosition)
+    }
+  }, [isHomePage, isOpen])
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card shadow-sm"
     >
-      {isHomePage && !isOpen ? <MobileMenuArrow isScrolling={isScrolling} /> : null}
+      {isHomePage && !isOpen && arrowPosition ? (
+        <MobileMenuArrow isScrolling={isScrolling} top={arrowPosition.top} left={arrowPosition.left} />
+      ) : null}
 
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -135,6 +169,7 @@ export function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
+            ref={mobileMenuButtonRef}
             className="relative z-[90] lg:hidden rounded-lg border border-primary bg-primary p-2 text-primary-foreground shadow-sm"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -219,11 +254,20 @@ export function Navigation() {
   )
 }
 
-function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
+function MobileMenuArrow({
+  isScrolling,
+  top,
+  left,
+}: {
+  isScrolling: boolean
+  top: number
+  left: number
+}) {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed right-14 top-[4.2rem] z-[85] lg:hidden"
+      className="pointer-events-none fixed z-[85] lg:hidden"
+      style={{ top, left }}
     >
       <div
         className={cn(
@@ -236,19 +280,19 @@ function MobileMenuArrow({ isScrolling }: { isScrolling: boolean }) {
         <svg
           viewBox="0 0 120 120"
           className={cn(
-            "h-20 w-20 -scale-x-100 text-primary motion-safe:animate-menu-arrow-idle",
+            "h-20 w-20 text-primary motion-safe:animate-menu-arrow-idle",
             isScrolling ? "motion-safe:animate-menu-arrow-active" : ""
           )}
           fill="none"
         >
           <path
-            d="M22 100C24 74 43 50 74 38C85 34 94 32 103 32"
+            d="M18 28C35 28 53 32 68 40C83 48 96 61 102 80"
             stroke="currentColor"
             strokeWidth="6"
             strokeLinecap="round"
           />
           <path
-            d="M89 20L104 32L90 46"
+            d="M90 69L102 81L86 88"
             stroke="currentColor"
             strokeWidth="6"
             strokeLinecap="round"
