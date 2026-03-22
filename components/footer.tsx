@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Wrench } from "lucide-react"
+import { MessageCircle, Phone, Wrench } from "lucide-react"
+import { siteConfig } from "@/lib/site"
 
 const pageLinks = [
   { href: "/", label: "Home" },
@@ -82,10 +83,30 @@ export function Footer() {
               <li>Based in Coventry, UK</li>
               <li>
                 <a
-                  href="mailto:hello@built4trades.co.uk"
+                  href={siteConfig.phoneHref}
+                  className="inline-flex items-center gap-2 hover:text-primary transition-colors"
+                >
+                  <Phone className="h-4 w-4 text-primary" />
+                  {siteConfig.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={siteConfig.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-primary transition-colors"
+                >
+                  <MessageCircle className="h-4 w-4 text-primary" />
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${siteConfig.email}`}
                   className="hover:text-primary transition-colors"
                 >
-                  hello@built4trades.co.uk
+                  {siteConfig.email}
                 </a>
               </li>
             </ul>

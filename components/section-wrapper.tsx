@@ -17,7 +17,7 @@ export function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "py-16 lg:py-24 cv-auto",
+        "py-16 lg:py-24",
         {
           "bg-background": background === "default",
           "bg-muted": background === "muted",

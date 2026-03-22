@@ -7,42 +7,51 @@ const plans = [
   {
     name: "Basic",
     price: "15.90",
-    description: "A simple one-page site for trades who just need a clean online presence.",
+    audience: "Getting online for the first time",
+    description: "Get online fast with a clean, professional one-page site built around your trade, your number, and your area.",
     features: [
       "1-page website",
       "Mobile-friendly design",
       "Hosting included",
       "Contact form",
-      "Basic on-page SEO",
-      "SSL security included",
+      "WhatsApp or call button",
+      "Set up to show on Google",
+      "Secure site (padlock in browser)",
     ],
   },
   {
     name: "Starter",
-    price: "29",
-    description: "Perfect for getting started with a professional site that can grow with your business.",
+    price: "25",
+    audience: "Best for most trades looking for steady enquiries",
+    description: "Best for trades who want a stronger website that helps turn more visitors into enquiries.",
     features: [
       "Everything in Basic",
       "Multi-page site (up to 3 pages)",
-      "Google Maps embed",
-      "WhatsApp or call CTA",
-      "Monthly content updates",
+      "Google Maps section",
+      "Text and image updates on request",
     ],
   },
   {
     name: "Pro",
     price: "49",
-    description: "A more complete setup for trades that need a larger site, stronger SEO, and smarter automation.",
+    audience: "For established businesses wanting more leads",
+    description: "A more complete setup for trades that need a larger site, stronger local visibility, and faster follow-up.",
     features: [
       "Everything in Starter",
       "Multi-page site (up to 15 pages)",
-      "Local SEO setup",
-      "Google Business profile help",
+      "Optimised to rank in your area",
+      "Google Maps listing setup",
       "Google review link setup",
-      "Automation setup",
+      "Instant lead notification setup",
       "Priority support",
     ],
   },
+]
+
+const reassurancePoints = [
+  "No contracts",
+  "Cancel anytime",
+  "No upfront payment",
 ]
 
 const comparisonRows = [
@@ -63,31 +72,31 @@ const comparisonRows = [
     included: [true, true, true],
   },
   {
-    label: "Basic on-page SEO",
+    label: "Set up to show on Google",
     included: [true, true, true],
   },
   {
-    label: "SSL security",
+    label: "Secure site (padlock in browser)",
     included: [true, true, true],
   },
   {
-    label: "Google Maps embed",
+    label: "Google Maps section",
     included: [false, true, true],
   },
   {
-    label: "WhatsApp or call CTA",
+    label: "WhatsApp or call button",
+    included: [true, true, true],
+  },
+  {
+    label: "Text and image updates on request",
     included: [false, true, true],
   },
   {
-    label: "Monthly content updates",
-    included: [false, true, true],
-  },
-  {
-    label: "Local SEO setup",
+    label: "Optimised to rank in your area",
     included: [false, false, true],
   },
   {
-    label: "Google Business profile help",
+    label: "Google Maps listing setup",
     included: [false, false, true],
   },
   {
@@ -95,7 +104,7 @@ const comparisonRows = [
     included: [false, false, true],
   },
   {
-    label: "Automation setup",
+    label: "Instant lead notification setup",
     included: [false, false, true],
   },
   {
@@ -151,6 +160,9 @@ export default function PricingPage() {
                       </span>
                     )}
                     <h3 className="font-display text-lg font-bold text-foreground lg:text-xl">{plan.name}</h3>
+                    <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-primary lg:text-[11px]">
+                      {plan.audience}
+                    </p>
                     <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground lg:text-xs">{plan.description}</p>
                     <div className="mt-2 flex items-baseline justify-center gap-1">
                       <span className="font-display text-2xl font-bold text-foreground lg:text-3xl">£{plan.price}</span>
@@ -189,7 +201,7 @@ export default function PricingPage() {
 
               <div className="grid grid-cols-1 gap-2 p-3 lg:grid-cols-[1.45fr_repeat(3,minmax(0,1fr))] lg:p-4">
                 <div className="text-[11px] leading-relaxed text-muted-foreground lg:text-xs">
-                  No setup fees. No long contracts. Hosting and support are included across all plans.
+                  No setup fees. No long contracts. Hosting and support are included across all plans. Basic includes on-site Google setup, while Starter and Pro add the stronger local visibility features.
                 </div>
                 {plans.map((plan) => (
                   <Button
@@ -207,15 +219,42 @@ export default function PricingPage() {
           </div>
         </div>
 
+        <div className="mx-auto mt-5 grid max-w-5xl gap-3 rounded-2xl border border-border bg-muted/30 p-4 sm:grid-cols-3">
+          {reassurancePoints.map((point) => (
+            <div key={point} className="flex items-center justify-center gap-2 text-center text-sm font-medium text-foreground">
+              <Check className="h-4 w-4 text-green-600" />
+              <span>{point}</span>
+            </div>
+          ))}
+        </div>
+
         {/* Additional Info */}
         <div
           className="text-center mt-12 max-w-2xl mx-auto"
         >
+          <p className="text-foreground font-medium mb-3">
+            One booked job from your website can cover 6 months of hosting.
+          </p>
           <p className="text-primary font-semibold mb-4">
             Setup fee waived if you go live within 7 days of seeing your demo
           </p>
           <p className="text-muted-foreground text-sm">
             No contracts. Cancel anytime. All prices include UK hosting and support.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-3xl rounded-3xl border border-primary/15 bg-primary/5 p-6 text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+            Real Client Proof
+          </p>
+          <p className="mt-3 font-display text-2xl font-bold text-foreground">
+            Built for trades like ADL Mechanic
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            A live mobile mechanic website built to convert urgent callouts and local service enquiries with clear contact paths and fast decision-making.
+          </p>
+          <p className="mt-4 text-sm font-medium text-foreground">
+            Real project. Trade-first messaging. Built to turn visitors into calls and enquiries.
           </p>
         </div>
       </SectionWrapper>

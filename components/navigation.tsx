@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { Menu, MessageCircle, Phone, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { siteConfig } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -75,7 +76,23 @@ export function Navigation() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-3">
+            <a
+              href={siteConfig.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <MessageCircle className="h-4 w-4 text-primary" />
+              WhatsApp
+            </a>
+            <a
+              href={siteConfig.phoneHref}
+              className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <Phone className="h-4 w-4 text-primary" />
+              {siteConfig.phoneDisplay}
+            </a>
             <Button asChild>
               <Link href="/contact">Get a Free Demo</Link>
             </Button>
@@ -139,7 +156,23 @@ export function Navigation() {
                 </Link>
               ))}
             </div>
-            <div className="mt-auto pt-6 border-t border-border">
+            <div className="mt-auto space-y-3 pt-6 border-t border-border">
+              <a
+                href={siteConfig.phoneHref}
+                className="flex items-center gap-3 rounded-lg border border-border px-4 py-3 text-base font-medium text-foreground"
+              >
+                <Phone className="h-5 w-5 text-primary" />
+                {siteConfig.phoneDisplay}
+              </a>
+              <a
+                href={siteConfig.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 rounded-lg border border-border px-4 py-3 text-base font-medium text-foreground"
+              >
+                <MessageCircle className="h-5 w-5 text-primary" />
+                WhatsApp Us
+              </a>
               <Button asChild className="w-full" size="lg">
                 <Link href="/contact">Get a Free Demo</Link>
               </Button>

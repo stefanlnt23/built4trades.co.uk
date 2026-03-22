@@ -1,9 +1,33 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Star, CheckCircle2, XCircle, MapPin, Monitor, Smartphone, Search, PhoneCall, Server, Headphones } from "lucide-react"
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock3,
+  ExternalLink,
+  Headphones,
+  MapPin,
+  MessageCircle,
+  Monitor,
+  PhoneCall,
+  PoundSterling,
+  Search,
+  Server,
+  ShieldCheck,
+  Smartphone,
+  XCircle,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { TradeCard } from "@/components/trade-card"
 import { SectionWrapper, SectionHeader } from "@/components/section-wrapper"
+import { siteConfig } from "@/lib/site"
+
+const proofPoints = [
+  "Live in 5 to 7 days",
+  `From GBP ${siteConfig.pricingFrom}/month`,
+  "No contracts",
+  "UK-based support",
+]
 
 const trades = [
   "Mechanics",
@@ -12,6 +36,23 @@ const trades = [
   "Builders",
   "Roofers",
   "Accountants",
+]
+
+const featuredProjects = [
+  {
+    image: "/adl-mechanic-1.webp",
+    trade: "Mobile Mechanic",
+    businessName: "ADL Mechanic",
+    description: "A live website built to convert urgent callouts, servicing work, and local mechanic enquiries.",
+    url: "https://adlmechanic.uk",
+  },
+  {
+    image: "/daw-mobile-mechanic-1.webp",
+    trade: "Mobile Mechanic",
+    businessName: "DAW Mobile Mechanic",
+    description: "A real trade website focused on fast trust, clear services, and direct booking intent.",
+    url: "https://dawmobilemechanic.co.uk",
+  },
 ]
 
 const tradeCards = [
@@ -101,23 +142,33 @@ const tradeCards = [
   },
 ]
 
-const stats = [
+const outcomes = [
   {
-    stat: "87%",
-    text: "of people search online before hiring a local tradesperson",
+    title: "Get found before the next trade",
+    description: "When someone searches in a hurry, the business they can find first often gets the call.",
+    icon: Search,
   },
   {
-    stat: "39%",
-    text: "more earnings for businesses with a professional website",
+    title: "Look trustworthy in seconds",
+    description: "A proper site helps people feel safe contacting you before they have even spoken to you.",
+    icon: ShieldCheck,
   },
   {
-    stat: "0.05s",
-    text: "First impressions happen fast — a bad site loses the job instantly",
+    title: "Take enquiries when you cannot answer",
+    description: "Your site keeps collecting calls, form leads, and WhatsApp clicks while you are on the tools.",
+    icon: Clock3,
   },
   {
-    stat: "24/7",
-    text: "Your website works around the clock, even when you're off",
+    title: "Start from a clear monthly price",
+    description: `Simple pricing from GBP ${siteConfig.pricingFrom} with hosting included and no contract tying you in.`,
+    icon: PoundSterling,
   },
+]
+
+const urgencySignals = [
+  "If people cannot check you online, they usually contact the next trade they can.",
+  "Even word-of-mouth leads still search your name before they call.",
+  "A website keeps working after hours, while you are on a job, and when you miss the phone.",
 ]
 
 const features = [
@@ -187,7 +238,7 @@ const howItWorks = [
   {
     step: "01",
     title: "Send Your Enquiry",
-    description: "Fill in a quick form with your trade, area, and what you need. We review it and get back to you with the right next step.",
+    description: "Tell us your trade, service area, and what you need. We keep it simple and come back with the right next step.",
     accentClassName: "from-orange-100 via-amber-50 to-white",
     badgeClassName: "border-orange-200 bg-orange-50 text-orange-700",
     tiltClassName: "md:-rotate-[3deg] md:-translate-y-2",
@@ -195,7 +246,7 @@ const howItWorks = [
   {
     step: "02",
     title: "Approve the Plan",
-    description: "We send you a clear quote, timeline, and upfront starting fee. Once that's paid, your project is booked in and ready to start.",
+    description: "We send you a clear quote, timeline, and scope. No hidden fees, no vague pricing, and no contract tying you in.",
     accentClassName: "from-sky-100 via-cyan-50 to-white",
     badgeClassName: "border-sky-200 bg-sky-50 text-sky-700",
     tiltClassName: "md:rotate-[1.5deg] md:translate-y-3",
@@ -203,7 +254,7 @@ const howItWorks = [
   {
     step: "03",
     title: "We Build and Launch",
-    description: "We design, build, and refine your website, then launch it properly so your business can start getting found online.",
+    description: "We design, refine, and launch your site properly. Most projects are live within 5 to 7 days once approved.",
     accentClassName: "from-emerald-100 via-lime-50 to-white",
     badgeClassName: "border-emerald-200 bg-emerald-50 text-emerald-700",
     tiltClassName: "md:-rotate-[2deg] md:translate-y-1",
@@ -222,28 +273,33 @@ const positives = [
   "Appear in local Google searches",
   "Instantly look more professional and trustworthy",
   "Customers can call, email or WhatsApp from your site 24/7",
-  "Reviews and testimonials build trust automatically",
+  "Real projects and clear service pages build trust quickly",
   "New enquiries while you're on the job",
 ]
 
-const reviews = [
+const reasons = [
+  "Built specifically for UK trades, not generic businesses",
+  "Free demo first, so people can see the quality before committing",
+  "No contracts and clear monthly pricing from day one",
+  "Direct support from a real person in Coventry",
+]
+
+const faqs = [
   {
-    name: "Dave Hartley",
-    trade: "Plumber, Birmingham",
-    rating: 5,
-    text: "Stef built me a proper website in less than a week. I've already had three new customers find me through Google. Absolutely worth every penny.",
+    question: "How long does it take?",
+    answer: "Most websites are ready to launch within 5 to 7 days once the plan is approved and we have what we need from you.",
   },
   {
-    name: "Karen Mills",
-    trade: "Electrician, Manchester",
-    rating: 5,
-    text: "I put off getting a website for years because I thought it would be complicated. Built4Trades.co.uk made it dead easy. My site looks brilliant and I didn't have to do anything.",
+    question: "Do I need to pay before I see anything?",
+    answer: "No. You can start with a free demo so you can see the direction before deciding to move forward.",
   },
   {
-    name: "Tony Richardson",
-    trade: "Builder, Leeds",
-    rating: 5,
-    text: "Finally a web designer who speaks plain English! No jargon, no messing about. Just a solid website that makes my business look professional.",
+    question: "Can customers call or WhatsApp me from the site?",
+    answer: "Yes. We can build in click-to-call, contact forms, and WhatsApp buttons so people can reach you fast.",
+  },
+  {
+    question: "Do I own the website?",
+    answer: "Yes. Your business, branding, and website content are yours. There is no lock-in platform and no contract trapping you in.",
   },
 ]
 
@@ -265,29 +321,31 @@ const cities = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80"
-          alt="Professional tradesperson at work"
-          fill
-          className="object-cover"
-          priority
-          quality={75}
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-hero-overlay" />
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div
-            className="max-w-4xl mx-auto"
-          >
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground mb-6 text-balance">
+      <section className="relative overflow-hidden bg-[linear-gradient(180deg,rgba(255,247,238,0.98),rgba(247,242,235,0.94))] pt-28 pb-14 lg:pt-36 lg:pb-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_24%)]" />
+        <div className="container relative mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:items-center lg:px-8">
+          <div className="max-w-3xl">
+            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/15 bg-white/80 px-4 py-2 text-sm font-medium text-foreground shadow-sm">
+              <Clock3 className="h-4 w-4 text-primary" />
+              Free demo first. Most sites live in 5 to 7 days.
+            </div>
+            <h1 className="font-display text-4xl font-bold text-foreground text-balance sm:text-5xl lg:text-6xl xl:text-7xl">
               Your Trade Deserves a Website That Works as Hard as You Do
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-primary-foreground/90 mb-10 max-w-2xl mx-auto">
-              We build fast, professional websites for UK tradespeople. No jargon. No contracts. Just results.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              We build fast, professional websites for UK tradespeople. No jargon. No contracts. Just a proper site that helps you look trusted and win more work.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mt-6 flex flex-wrap gap-3">
+              {proofPoints.map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center rounded-full border border-stone-200 bg-white/75 px-4 py-2 text-sm font-medium text-foreground shadow-sm"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Button asChild size="lg" className="text-lg px-8 py-6">
                 <Link href="/contact">Get a Free Demo</Link>
               </Button>
@@ -295,44 +353,167 @@ export default function HomePage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-6 bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-foreground"
+                className="text-lg px-8 py-6 bg-white/70"
               >
-                <Link href="/portfolio">See Our Work</Link>
+                <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
+                  WhatsApp Us
+                </a>
               </Button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Bar */}
-      <section className="bg-secondary py-6 lg:py-8">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div
-            className="text-center"
-          >
-            <p className="text-secondary-foreground/80 text-sm mb-4">
-              Trusted by tradespeople across the UK
+            <p className="mt-4 text-sm text-muted-foreground">
+              Or call <a className="font-medium text-foreground underline decoration-primary/40 underline-offset-4" href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
-              {trades.map((trade) => (
-                <span
-                  key={trade}
-                  className="text-secondary-foreground font-medium text-sm lg:text-base"
-                >
-                  {trade}
+          </div>
+
+          <div className="relative">
+            <div className="absolute -inset-6 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.22),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(15,23,42,0.12),transparent_32%)] blur-2xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-stone-200/80 bg-white/90 p-4 shadow-[0_30px_80px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:p-5">
+              <div className="mb-4 flex items-center justify-between gap-4 rounded-2xl border border-stone-200 bg-stone-50/80 px-4 py-3">
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">Live Client Site</p>
+                  <p className="mt-1 font-display text-xl font-bold text-foreground">ADL Mechanic</p>
+                </div>
+                <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-700">
+                  Real Project
                 </span>
-              ))}
+              </div>
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] border border-stone-200 bg-stone-100">
+                <Image
+                  src="/adl-mechanic-1.webp"
+                  alt="ADL Mechanic website preview"
+                  fill
+                  priority
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+              </div>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Built For</p>
+                  <p className="mt-2 font-medium text-foreground">Urgent callout leads</p>
+                </div>
+                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Contact Path</p>
+                  <p className="mt-2 font-medium text-foreground">Phone and fast enquiries</p>
+                </div>
+                <div className="rounded-2xl border border-stone-200 bg-stone-50/80 p-4">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500">Turnaround</p>
+                  <p className="mt-2 font-medium text-foreground">Fast, clear, trade-first</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Built for Your Trade */}
+      <section className="border-y border-stone-200/80 bg-secondary py-6">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-6">
+            <span className="text-sm font-medium text-secondary-foreground/70">Built for trades across the UK</span>
+            {trades.map((trade) => (
+              <span
+                key={trade}
+                className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm font-medium text-secondary-foreground"
+              >
+                {trade}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <SectionWrapper>
         <SectionHeader
-          title="Built for Your Trade"
-          subtitle="Whatever your trade, we build websites that get you found and get you hired."
+          title="Real Websites, Not Just Mockups"
+          subtitle="These are live projects already built for real businesses. That matters more than polished concepts."
         />
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-8">
+          {featuredProjects.map((project) => (
+            <div
+              key={project.businessName}
+              className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-[0_24px_70px_rgba(15,23,42,0.08)]"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
+                <Image
+                  src={project.image}
+                  alt={`${project.businessName} website preview`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-6 lg:p-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">{project.trade}</p>
+                <h3 className="mt-2 font-display text-2xl font-bold text-foreground">{project.businessName}</h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">{project.description}</p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Button asChild>
+                    <a href={project.url} target="_blank" rel="noreferrer">
+                      View Live Site <ExternalLink className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link href="/portfolio">See More Work</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper background="secondary">
+        <div className="text-center mb-12">
+          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-balance mb-4">
+            Every Day Without a Proper Website Makes Winning Work Harder
+          </h2>
+          <p className="mx-auto max-w-3xl text-lg text-secondary-foreground/80">
+            Tradespeople do not need buzzwords. They need to be found quickly, look trustworthy fast, and give customers an easy way to get in touch before the next trade gets the job.
+          </p>
+        </div>
+        <div className="mb-8 grid gap-3 lg:grid-cols-3">
+          {urgencySignals.map((signal) => (
+            <div
+              key={signal}
+              className="rounded-[1.5rem] border border-white/10 bg-white/6 px-5 py-4 text-left text-sm leading-relaxed text-secondary-foreground/82"
+            >
+              {signal}
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {outcomes.map((item) => {
+            const Icon = item.icon
+
+            return (
+              <div
+                key={item.title}
+                className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
+                  <Icon className="h-5 w-5 text-primary" />
+                </div>
+                <h3 className="mt-5 font-display text-2xl font-bold text-white">{item.title}</h3>
+                <p className="mt-3 leading-relaxed text-secondary-foreground/75">{item.description}</p>
+              </div>
+            )
+          })}
+        </div>
+        <div className="mt-10 text-center">
+          <Button asChild size="lg">
+            <Link href="/contact">Get a Free Demo</Link>
+          </Button>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <SectionHeader
+          title="Do Not See Your Trade Above?"
+          subtitle="The live projects above are real client sites. These designs below show the kind of tailored look we can build for other trades too."
+        />
+        <p className="mx-auto mb-10 max-w-3xl text-center text-sm font-medium uppercase tracking-[0.18em] text-stone-500">
+          Custom directions for any trade, not off-the-shelf templates
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-x-8 lg:gap-y-10">
           {tradeCards.map((card) => (
             <TradeCard
@@ -354,52 +535,13 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      {/* Why No Website Is Costing You Work */}
-      <SectionWrapper background="secondary">
-        <div
-          className="text-center mb-12"
-        >
-          <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold text-balance mb-4">
-            Every Day Without a Website Is a Day Your Competition Gets the Call
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-12">
-          {stats.map((item, index) => (
-            <div
-              key={index}
-              className="text-center p-6 rounded-xl bg-secondary-foreground/5"
-            >
-              <div className="font-display text-4xl lg:text-5xl font-bold text-primary mb-3">
-                {item.stat}
-              </div>
-              <p className="text-secondary-foreground/80 text-sm lg:text-base">
-                {item.text}
-              </p>
-            </div>
-          ))}
-        </div>
-        <div
-          className="text-center"
-        >
-          <p className="text-xl lg:text-2xl font-medium text-secondary-foreground mb-6">
-            {"Don't lose another job to a competitor with a website."}
-          </p>
-          <Button asChild size="lg">
-            <Link href="/contact">Get Yours Today</Link>
-          </Button>
-        </div>
-      </SectionWrapper>
-
-      {/* What You Get */}
       <SectionWrapper>
         <SectionHeader
           title="Everything Your Business Needs Online"
           subtitle="No technical jargon. No hidden costs. Just everything you need to get found and get hired."
         />
         <div className="space-y-8">
-          <div
-            className="relative px-2 py-4 sm:px-4"
-          >
+          <div className="relative px-2 py-4 sm:px-4">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.82),transparent_34%),radial-gradient(circle_at_bottom,rgba(247,242,235,0.78),transparent_24%)]" />
             <div className="relative mx-auto max-w-[1280px]">
               <div className="pointer-events-none absolute inset-x-[8%] top-10 bottom-12 hidden lg:block">
@@ -498,7 +640,7 @@ export default function HomePage() {
               </div>
 
               <div className="absolute inset-0 hidden lg:block">
-                {features.map((feature, index) => {
+                {features.map((feature) => {
                   const Icon = feature.icon
 
                   return (
@@ -538,7 +680,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:hidden">
-            {features.map((feature, index) => {
+            {features.map((feature) => {
               const Icon = feature.icon
 
               return (
@@ -567,11 +709,10 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      {/* How It Works */}
       <SectionWrapper background="muted">
         <SectionHeader
           title="How It Works"
-          subtitle="From zero to live website in days — here's the process"
+          subtitle="From zero to live website in days — with a simple process and no tech headaches."
         />
         <div className="relative mx-auto max-w-6xl">
           <div className="pointer-events-none absolute left-[16.66%] right-[16.66%] top-11 hidden h-px bg-gradient-to-r from-orange-200 via-stone-300 to-emerald-200 lg:block" />
@@ -608,20 +749,66 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      {/* Before/After Comparison */}
       <SectionWrapper>
         <SectionHeader
-          title="What a Proper Website Does for Your Business"
+          title="Why Trades Choose Built4Trades"
+          subtitle="If you do not have loads of reviews yet, trust has to come from a clear offer, real work, and a real person behind it."
         />
+        <div className="grid gap-10 lg:grid-cols-[minmax(320px,0.85fr)_minmax(0,1.15fr)] lg:items-center">
+          <div className="relative">
+            <div className="absolute -inset-5 rounded-[2rem] bg-[radial-gradient(circle_at_top,rgba(251,146,60,0.18),transparent_36%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.14),transparent_34%)] blur-2xl" />
+            <div className="relative aspect-[4/4.7] overflow-hidden rounded-[2rem] border border-white/55 bg-[linear-gradient(180deg,rgba(255,248,240,0.96),rgba(241,235,226,0.96))] shadow-[0_28px_70px_rgba(15,23,42,0.10)]">
+              <Image
+                src="/me.png"
+                alt="Stef - Built4Trades.co.uk founder"
+                fill
+                className="object-cover object-top scale-[1.03]"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_20%,transparent_100%)]" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-[linear-gradient(180deg,transparent,rgba(241,235,226,0.88))]" />
+            </div>
+            <div className="absolute -bottom-6 left-5 rounded-xl bg-primary p-5 text-primary-foreground shadow-lg">
+              <p className="font-display text-2xl font-bold">{siteConfig.founderName}</p>
+              <p className="text-primary-foreground/80">Based in {siteConfig.baseLocation}</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-lg leading-relaxed text-muted-foreground">
+              You are not dealing with a faceless agency. Built4Trades is run by a real person, focused on one niche, with live trade websites already in the portfolio.
+            </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {reasons.map((reason) => (
+                <div
+                  key={reason}
+                  className="rounded-[1.5rem] border border-border bg-card p-5 shadow-sm"
+                >
+                  <CheckCircle2 className="h-5 w-5 text-primary" />
+                  <p className="mt-3 font-medium text-foreground">{reason}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild>
+                <Link href="/about">Meet Stef</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/contact">Request Your Free Demo</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <SectionHeader title="What a Proper Website Does for Your Business" />
         <div className="relative mx-auto max-w-6xl">
           <div className="pointer-events-none absolute left-12 top-10 hidden h-40 w-40 rounded-full bg-stone-200/60 blur-3xl lg:block" />
           <div className="pointer-events-none absolute bottom-8 right-10 hidden h-48 w-48 rounded-full bg-primary/15 blur-3xl lg:block" />
 
           <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,0.95fr)_auto_minmax(0,1.05fr)] lg:items-center">
-            {/* Without */}
-            <div
-              className="relative lg:mt-10"
-            >
+            <div className="relative lg:mt-10">
               <div className="absolute inset-4 rounded-[2rem] bg-stone-300/45 blur-2xl" />
               <div className="absolute -bottom-5 left-5 right-10 h-full rounded-[2rem] border border-stone-300/70 bg-stone-100/70" />
               <div className="relative overflow-hidden rounded-[2rem] border border-stone-300/80 bg-[linear-gradient(180deg,rgba(247,243,236,0.98),rgba(238,232,223,0.96))] p-6 shadow-[0_28px_70px_rgba(56,44,34,0.10)] lg:p-8">
@@ -639,9 +826,9 @@ export default function HomePage() {
                   </span>
                 </div>
                 <ul className="space-y-4">
-                  {negatives.map((item, index) => (
+                  {negatives.map((item) => (
                     <li
-                      key={index}
+                      key={item}
                       className="flex items-start gap-3 rounded-2xl border border-stone-300/60 bg-white/50 px-4 py-3"
                     >
                       <XCircle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
@@ -652,9 +839,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div
-              className="relative z-10 mx-auto hidden lg:flex"
-            >
+            <div className="relative z-10 mx-auto hidden lg:flex">
               <div className="flex h-24 w-24 items-center justify-center rounded-full border border-primary/25 bg-white/90 shadow-[0_18px_45px_rgba(15,23,42,0.12)] backdrop-blur-sm">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-sm font-display font-bold uppercase tracking-[0.2em] text-primary-foreground">
                   vs
@@ -662,10 +847,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* With */}
-            <div
-              className="relative lg:-mt-8"
-            >
+            <div className="relative lg:-mt-8">
               <div className="absolute inset-4 rounded-[2rem] bg-primary/20 blur-2xl" />
               <div className="absolute -left-6 -top-6 h-24 w-24 rounded-[1.75rem] border border-primary/20 bg-white/60" />
               <div className="relative overflow-hidden rounded-[2rem] border border-primary/25 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.18),transparent_28%),linear-gradient(180deg,rgba(255,245,236,0.98),rgba(255,237,222,0.96))] p-6 shadow-[0_28px_70px_rgba(234,88,12,0.16)] lg:p-8">
@@ -675,7 +857,7 @@ export default function HomePage() {
                       Better Way
                     </span>
                     <h3 className="font-display text-xl font-bold text-primary lg:text-2xl">
-                      With a Built4Trades.co.uk Website
+                      With a Built4Trades Website
                     </h3>
                   </div>
                   <span className="inline-flex rounded-full border border-primary/20 bg-primary/12 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
@@ -683,9 +865,9 @@ export default function HomePage() {
                   </span>
                 </div>
                 <ul className="space-y-4">
-                  {positives.map((item, index) => (
+                  {positives.map((item) => (
                     <li
-                      key={index}
+                      key={item}
                       className="flex items-start gap-3 rounded-2xl border border-primary/15 bg-white/65 px-4 py-3"
                     >
                       <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
@@ -699,56 +881,34 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      {/* Google Reviews */}
       <SectionWrapper background="muted">
         <SectionHeader
-          title="What Tradespeople Are Saying"
-          subtitle="Real businesses, real results"
+          title="Homepage FAQs"
+          subtitle="A few straight answers to the objections people usually have before getting started."
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {reviews.map((review, index) => (
+        <div className="mx-auto grid max-w-5xl gap-4 lg:grid-cols-3">
+          {faqs.map((item) => (
             <div
-              key={index}
-              className="bg-card rounded-xl p-6 border border-border shadow-sm"
+              key={item.question}
+              className="rounded-[1.75rem] border border-border bg-card p-6 shadow-sm"
             >
-              <div className="flex items-center gap-2 mb-4">
-                <div className="flex">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-                <span className="text-xs text-muted-foreground ml-auto">
-                  Google Review
-                </span>
-              </div>
-              <p className="text-foreground mb-4 leading-relaxed">
-                {`"${review.text}"`}
-              </p>
-              <div>
-                <p className="font-semibold text-foreground">{review.name}</p>
-                <p className="text-sm text-muted-foreground">{review.trade}</p>
-              </div>
+              <h3 className="font-display text-xl font-bold text-foreground">{item.question}</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{item.answer}</p>
             </div>
           ))}
         </div>
       </SectionWrapper>
 
-      {/* UK Coverage */}
       <SectionWrapper>
         <SectionHeader
           title="Based in Coventry. Building for the Whole of the UK."
-          subtitle="Whether you're a plumber in Manchester, an electrician in Bristol, or a mechanic in Glasgow — we build websites for tradespeople all over the UK. Everything is handled remotely. You never need to leave your van."
+          subtitle="Whether you're a plumber in Manchester, an electrician in Bristol, or a mechanic in Glasgow — everything is handled remotely. You never need to leave your van."
         />
-        <div
-          className="flex flex-wrap items-center justify-center gap-3"
-        >
+        <div className="flex flex-wrap items-center justify-center gap-3">
           {cities.map((city) => (
             <span
               key={city}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-muted rounded-full text-sm font-medium text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full bg-muted px-4 py-2 text-sm font-medium text-foreground"
             >
               <MapPin className="h-3.5 w-3.5 text-primary" />
               {city}
@@ -757,22 +917,38 @@ export default function HomePage() {
         </div>
       </SectionWrapper>
 
-      {/* Final CTA */}
       <SectionWrapper background="secondary">
-        <div
-          className="text-center max-w-3xl mx-auto"
-        >
+        <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-display text-3xl lg:text-4xl xl:text-5xl font-bold mb-6">
-            Ready to Get Your Business Online?
+            See Your Business as a Real Website Before You Pay a Penny
           </h2>
           <p className="text-secondary-foreground/80 text-lg lg:text-xl mb-8">
-            Get a free demo website built for your trade — no payment, no obligation. See exactly what your new site could look like.
+            We will build a free demo site around your trade, your area, and your service style. No payment. No obligation. Just a proper look at what your business could look like online.
           </p>
-          <Button asChild size="lg" className="text-lg px-8 py-6">
-            <Link href="/contact">Request Your Free Demo</Link>
-          </Button>
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Button asChild size="lg" className="text-lg px-8 py-6">
+              <Link href="/contact">Request Your Free Demo</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white hover:text-foreground text-lg px-8 py-6">
+              <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
+                WhatsApp Us
+              </a>
+            </Button>
+          </div>
         </div>
       </SectionWrapper>
+
+      <a
+        href={siteConfig.whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-5 right-5 z-50 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(37,211,102,0.32)] transition-transform hover:-translate-y-0.5"
+      >
+        <MessageCircle className="h-4 w-4" />
+        WhatsApp
+        <ArrowRight className="h-4 w-4" />
+      </a>
     </>
   )
 }
