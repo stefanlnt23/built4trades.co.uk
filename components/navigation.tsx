@@ -22,7 +22,8 @@ const navLinks = [
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolling, setIsScrolling] = useState(false)
-  const [arrowPosition, setArrowPosition] = useState<{ top: number; left: number } | null>(null)
+  const [arrowTarget, setArrowTarget] = useState<{ x: number; y: number } | null>(null)
+  const [viewportSize, setViewportSize] = useState<{ width: number; height: number }>({ width: 0, height: 0 })
   const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null)
   const pathname = usePathname()
   const isHomePage = pathname === "/"
@@ -72,31 +73,38 @@ export function Navigation() {
 
   useEffect(() => {
     if (!isHomePage || isOpen) {
-      setArrowPosition(null)
+      setArrowTarget(null)
       return
     }
 
-    const updateArrowPosition = () => {
+    const updateArrowTarget = () => {
       const button = mobileMenuButtonRef.current
 
+      setViewportSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+
       if (!button || window.innerWidth >= 1024) {
-        setArrowPosition(null)
+        setArrowTarget(null)
         return
       }
 
       const rect = button.getBoundingClientRect()
 
-      setArrowPosition({
-        top: rect.top + rect.height - 2,
-        left: rect.left - 76,
+      setArrowTarget({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
       })
     }
 
-    updateArrowPosition()
-    window.addEventListener("resize", updateArrowPosition)
+    updateArrowTarget()
+    window.addEventListener("resize", updateArrowTarget)
+    window.addEventListener("orientationchange", updateArrowTarget)
 
     return () => {
-      window.removeEventListener("resize", updateArrowPosition)
+      window.removeEventListener("resize", updateArrowTarget)
+      window.removeEventListener("orientationchange", updateArrowTarget)
     }
   }, [isHomePage, isOpen])
 
@@ -104,8 +112,8 @@ export function Navigation() {
     <header
       className="fixed top-0 left-0 right-0 z-[70] border-b border-border bg-card shadow-sm"
     >
-      {isHomePage && !isOpen && arrowPosition ? (
-        <MobileMenuArrow isScrolling={isScrolling} top={arrowPosition.top} left={arrowPosition.left} />
+      {isHomePage && !isOpen && arrowTarget ? (
+        <MobileMenuArrow isScrolling={isScrolling} target={arrowTarget} viewport={viewportSize} />
       ) : null}
 
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -256,43 +264,54 @@ export function Navigation() {
 
 function MobileMenuArrow({
   isScrolling,
-  top,
-  left,
+  target,
+  viewport,
 }: {
   isScrolling: boolean
-  top: number
-  left: number
+  target: { x: number; y: number }
+  viewport: { width: number; height: number }
 }) {
+  const viewportWidth = Math.max(viewport.width, 1)
+  const viewportHeight = Math.max(viewport.height, 1)
+  const startX = Math.max(16, target.x - 120)
+  const startY = Math.min(viewportHeight - 24, target.y + 42)
+  const controlOneX = target.x - 92
+  const controlOneY = target.y + 54
+  const controlTwoX = target.x - 38
+  const controlTwoY = target.y + 8
+  const tipX = target.x - 6
+  const tipY = target.y + 2
+
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none fixed z-[85] lg:hidden"
-      style={{ top, left }}
+      className="pointer-events-none fixed inset-0 z-[85] lg:hidden"
     >
       <div
         className={cn(
-          "transition-all duration-200 ease-out",
+          "absolute inset-0 transition-all duration-200 ease-out",
           isScrolling
             ? "scale-105 opacity-100 drop-shadow-[0_0_18px_rgba(249,115,22,0.48)]"
             : "opacity-80 drop-shadow-[0_0_8px_rgba(249,115,22,0.24)]"
         )}
       >
         <svg
-          viewBox="0 0 120 120"
+          viewBox={`0 0 ${viewportWidth} ${viewportHeight}`}
+          preserveAspectRatio="none"
           className={cn(
-            "h-20 w-20 text-primary motion-safe:animate-menu-arrow-idle",
+            "h-full w-full text-primary motion-safe:animate-menu-arrow-idle",
             isScrolling ? "motion-safe:animate-menu-arrow-active" : ""
           )}
           fill="none"
         >
           <path
-            d="M18 28C35 28 53 32 68 40C83 48 96 61 102 80"
+            d={`M ${startX} ${startY} C ${controlOneX} ${controlOneY}, ${controlTwoX} ${controlTwoY}, ${tipX} ${tipY}`}
             stroke="currentColor"
             strokeWidth="6"
             strokeLinecap="round"
           />
           <path
-            d="M90 69L102 81L86 88"
+            d={`M ${tipX - 15} ${tipY - 7} L ${target.x} ${target.y} L ${tipX - 6} ${tipY + 12}`}
             stroke="currentColor"
             strokeWidth="6"
             strokeLinecap="round"
