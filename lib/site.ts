@@ -1,8 +1,8 @@
 export const siteConfig = {
-  email: "hello@built4trades.co.uk",
-  phoneDisplay: "07123 456 789",
-  phoneHref: "tel:+447123456789",
-  whatsappHref: "https://wa.me/447123456789",
+  email: "info@web-force.info",
+  phoneDisplay: "07498378769",
+  phoneHref: "tel:+447498378769",
+  whatsappHref: "https://wa.me/447498378769",
   pricingFrom: "15.90",
   founderName: "Stef",
   baseLocation: "Coventry, UK",
