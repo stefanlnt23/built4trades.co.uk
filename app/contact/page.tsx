@@ -145,6 +145,10 @@ export default function ContactPage() {
                 />
               </div>
 
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 px-4 py-3 text-sm leading-relaxed text-muted-foreground">
+                By sending this form, you confirm you have read the privacy information covering how enquiries are handled. See the <a href="/privacy-policy" className="font-medium text-foreground underline underline-offset-4">Privacy Policy</a>, <a href="/cookie-policy" className="font-medium text-foreground underline underline-offset-4">Cookie Policy</a>, and <a href="/terms-and-conditions" className="font-medium text-foreground underline underline-offset-4">Terms &amp; Conditions</a>.
+              </div>
+
               <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Sending..." : "Get My Free Demo Site"}
               </Button>
