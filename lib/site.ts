@@ -1,5 +1,5 @@
 export const siteConfig = {
-  email: "info@web-force.info",
+  email: "stefan@built4trades.co.uk",
   phoneDisplay: "07498378769",
   phoneHref: "tel:+447498378769",
   whatsappHref: "https://wa.me/447498378769",

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans, Outfit, JetBrains_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
+import { AnalyticsConsent } from '@/components/analytics-consent'
+import { CookieBanner } from '@/components/cookie-banner'
 import { Navigation } from '@/components/navigation'
 import { Footer } from '@/components/footer'
 import { FloatingWhatsApp } from '@/components/floating-whatsapp'
@@ -69,7 +70,8 @@ export default function RootLayout({
         </main>
         <Footer />
         <FloatingWhatsApp />
-        <Analytics />
+        <CookieBanner />
+        <AnalyticsConsent />
       </body>
     </html>
   )
